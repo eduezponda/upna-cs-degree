@@ -1,0 +1,2 @@
+pinchar en paciente.java (clase), click derecho, tools, create/update test, JUnit 4, desactivar todas las opciones excepto "public" en "method access levels"->crear una especie de ejecutar para hacer pruebas
+necesitas variables publicas en la clase para poder modificar su valor desde fuera de la clases

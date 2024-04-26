@@ -1,0 +1,68 @@
+IASSim 2.0.4
+March, 2012
+
+
+SYSTEM REQUIREMENTS
+
+You must have Java 1.5 or later installed on your machine and the Java interpreter must be in your path variable.  The easiest way to test whether your system is set up correctly is to open a terminal or command window and type in:
+    java -version
+If you get an error message or if it displays a version number below 1.5, then go to the web site
+	http://java.sun.com/
+to get the software.
+
+
+STARTING IASSIM
+
+1.  On a Macintosh computer, just double-click on the "IASSim2.0.4.app" file.
+
+2.  On a Windows computer, double-click on the "IASSim.bat" file.
+
+3.  On a Linux computer or for those who prefer to use the command line,
+    (a) open a command or terminal window and navigate to
+        the "IASSim2.0.4" folder (the folder containing this instruction file).
+	(b) Type in one of the following commands (all on one line):
+	    (Windows users)
+		java -cp IASSim2.0.4.jar;jhall.jar;IASSimHelp2.0.jar iassim.Main -m IAS.cpu
+		(Mac or Linux users)
+		java -cp IASSim2.0.4.jar:jhall.jar:IASSimHelp2.0.jar iassim.Main -m IAS.cpu
+	(c) You can also add an optional argument to the command line:
+		    -t <text-file-name>
+		For example, if you add the optional argument
+		    -t Foo.txt
+		then IASSim will, on startup, open the file Foo.txt as an
+		assembly language text file.  If Foo.txt is not in the same
+		directory as the IASSim2.0.4.jar file, then you need to add
+		the appropriate directory path to the file name. For example, use
+		    -t ../Foo.txt
+		if Foo.txt is in the parent directory.
+
+
+TUTORIAL
+
+There is a brief tutorial that comes with IASSim.  To access it, start
+up IASSim and go to the Help menu and select "General IASSim help...".  In the dialog box that appears, open the General Help folder in the left column and click on the Running IASSim link.
+
+
+REFERENCES
+
+IASSim was designed to emulate the computer discussed in:
+    Arthur W. Burks, Herman H. Goldstine, John von Neumann,
+	"Preliminary Discussion of the Logical Design of an Electronic
+    Computing Instrument," Institute for Advanced Study, Princeton,
+    New Jersey, June 1946.
+Copies of this paper can be found online at:
+    http://hdl.handle.net/2027.42/3972  (PDF and TXT versions)
+    http://www.cs.unc.edu/~adyilie/comp265/vonNeumann.html (HTML version)
+
+
+CONTACT INFO
+
+Questions and comments should be directed to the authors:
+
+Dale Skrien
+Author email: djskrien@colby.edu
+Author home page: http://www.cs.colby.edu/djskrien
+
+Barry Fagin
+Author email: barry.fagin@usafa.edu
+Author home page: http://www.faginfamily.net/barry

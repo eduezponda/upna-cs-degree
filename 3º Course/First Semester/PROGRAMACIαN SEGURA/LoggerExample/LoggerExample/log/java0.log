@@ -1,0 +1,50 @@
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg0
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg1
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg2
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg3
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg4
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg5
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg6
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg7
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg8
+sept. 25, 2023 11:28:01 A. M. loggerexample.LoggerExample2 main
+INFO: Msg9
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+WARNING: Msg0
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+INFO: Msg1
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+WARNING: Msg2
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+INFO: Msg3
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+WARNING: Msg4
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+INFO: Msg5
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+WARNING: Msg6
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+INFO: Msg7
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+WARNING: Msg8
+sept. 25, 2023 11:28:02 A. M. loggerexample.A run
+INFO: Msg9
+sept. 25, 2023 11:28:02 A. M. loggerexample.B run
+SEVERE: Msg0
+sept. 25, 2023 11:28:02 A. M. loggerexample.B run
+SEVERE: Msg2
+sept. 25, 2023 11:28:02 A. M. loggerexample.B run
+SEVERE: Msg4
+sept. 25, 2023 11:28:02 A. M. loggerexample.B run
+SEVERE: Msg6
+sept. 25, 2023 11:28:02 A. M. loggerexample.B run
+SEVERE: Msg8

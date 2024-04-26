@@ -1,0 +1,20 @@
+Los extends son para casos extraños dentro de un caso de uso. Si es una posibilidad, entonces es otro caso de uso directamente.
+
+Tienes que hacer siempre con el mismo grado de abstracción. No puedes poner gestionar ... y luego en otro algo muy concreto.
+
+NO modelamos el tiempo en el diagrama de casos de usos (no modela el orden de las acciones en el proceso)
+
+Ejemplo abstracción:
+Puedes poner un caso de uso que sea gestion usuario y a partir de él se unan alta, baja, listado, todos de ellos a través de herencia 
+e igual entre ellos se unan con un include, o..., poner casos de usos distintos unidos al actor como solicitar baja...
+
+Ha puesto mi ejemplo en la pizarra y sólo ha puesto mal los extends -> creo que la solución por lo que ha explicado es convertir en herencias
+Después de preguntarle al profe, me ha recalcado que está mal los extends pero que luego puedes hacer herencia y o convertirlo en caso de uso.
+Lo que tienes que ver para ver cual es la solución óptima al problema, es el nivel de abstracción del diagrama.
+
+No separar en dos actores usuario y ciudadano.
+
+extends: ha ocurrido un caso extraño en el programa y por tanto...
+includes: siempre que ocurra a se ejecuta b
+
+si pones mal las flechas es un error grave porque se entiende que no se entiende sus significados

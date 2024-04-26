@@ -1,0 +1,51 @@
++layout regs
++n
++n
++n
++n
++n
++n
++n
+bucle () at datos_direccionamiento.s:40
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++x /a &buffer
+0x56559020:	0xa0b
++focus cmd
+Focus set to cmd window.
++x /2xw &buffer
+0x56559020:	0x00000a0b	0x00000000
++x /2xh &buffer
+0x56559020:	0x0a0b	0x0000
++x /xh &buffer
+0x56559020:	0x0a0b
++n
++n
++n
++n
++n
+salto1 () at datos_direccionamiento.s:75
++n
++n
++n
+[Inferior 1 (process 6818) exited normally]
++exir
+orden indefinida: «exir». Intente con «help»
++exit

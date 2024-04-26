@@ -1,0 +1,82 @@
++b _start
+Punto de interrupción 1 at 0x1000: file sumMtoN.s, line 21.
++run
+Starting program: /home/eduardo/Escritorio/Eduardo Ezponda/ESTRUCTURA DE COMPUTADORES/P5/sumMtoN 
+
+Breakpoint 1, _start () at sumMtoN.s:21
++x $esp
+0xffffd150:	0x00000001
++x $ebp
+0x0:	No se puede acceder a la memoria en la dirección 0x0
++x /xw $esp
+0xffffd150:	0x00000001
++p /s *(char**) ($esp+4)
+$1 = 0xffffd2ff "/home/eduardo/Escritorio/Eduardo Ezponda/ESTRUCTURA DE COMPUTADORES/P5/sumMtoN"
++s
++s
++x /i *(int*)$sp
+   0x5:	No se puede acceder a la memoria en la dirección 0x5
++n
++focus cmd
+Focus set to cmd window.
++x /i *(int*)$sp
+   0x56556009 <_start+9>:	mov    %eax,%ebx
++n
++n
+sumMtoN () at sumMtoN.s:49
++p $ebp
+$2 = (void *) 0xffffd140
++p $esp
+$3 = (void *) 0xffffd140
++x /i *(int*)($ebp+4)
+   0x56556009 <_start+9>:	mov    %eax,%ebx
++n
++n
++n
++n
++n
++n
+bucle () at sumMtoN.s:65
++until
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++p $eax
+$4 = 45
++n
+bucle () at sumMtoN.s:75
++n
+bucle () at sumMtoN.s:78
++p $ebp
+$5 = (void *) 0x0
++p $esp
+$6 = (void *) 0xffffd144
++x * (int*)$esp
+   0x56556009 <_start+9>:	mov    %eax,%ebx
++n
+_start () at sumMtoN.s:28
++p $esp
+$7 = (void *) 0xffffd148
+aviso: Error detected on fd 0
+error detectado en la salida estándar

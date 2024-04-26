@@ -1,0 +1,39 @@
+Actividades:
+Poner fabricante en la partición vertical. Ir poniendo el pin en la mayoría de acciones para ir mostrando el flujo de datos. Cambia por ejemplo el estado de un dato cuando se realiza una
+acción y no un evento. (Poner a la venta) -> :Producto [vendido] (esto he entendido). Se devuelve el dinero cuando se pone a la venta el producto, no cuando se vende.
+Token bloqueado en poner venta (-5 ptos). Para arreglarlo poner un nodo de unión que implica que entran n tokens, y sale 1. Con lo cual, no hace falta esperar a que lleguen todos los tokens.
+Si quieres esperar a varias acciones, poner barra negra de concurrencia. Cuando el usuario solicita una etiqueta, no realiza la accion siguiente automaticamente sin recibir respuesta
+alguna. Por lo tanto, habria que poner una accion que sea devolver etiqueta o algo similar. El resto estaba bien. 
+
+Clase: (Explicación de toda la tutoria con otros alumnos) (Tengo cosas bien de aqui)
+El inventario realmente no existe. El inventario es la suma de todos los productos, con lo cual, añadir un producto al inventario sería añadir un producto a la base de datos de los productos.
+Además, cuando tienes un método en el cual su argumento sea un determinado objeto, lo normal es que ese método tenga que estar en la clase del tipo de argumento. Añadir un producto sería
+un insert a la base de datos de los productos, y no un update del inventario.
+Inventario sería el select * from productos. Inventario no tiene ni métodos ni atributos.
+El valor de la puntuación puede interpretarse como un string, pero como su valor varía del 0 al 10, hay que poner una nota explicativa unida con una línea discontinua.
+Interfaces y herencias son los únicos objetos en los que no hay que poner multiplicades. Poner multiplicidades en primitivos.
+El método por lo tanto de devolver producto, debido a que tiene producto como argumento, debe de estar en Producto. No me ha bajado por poner rombo negro en reseña y producto pero lo considera forzado.
+Hay gente que lo ha puesto con agregación compartida, y otros directamente como asociación (todas las opciones correctas). Usuario podía no unirse con reseña, o si se unía se ponia con 
+navigable false. Una categoria está compuesta por productos, asi que hay una agregación compartida (rombo blanco) (además pone multiplicidad 0..1 en categoria indicando que un producto
+puede no tener categoria, y si desaparecen las categorias, el producto sigue existiendo). En los casos de mis compañeros, les ha bajado por poner pocos métodos. No poner motor de búsqueda,
+ni nada de eso, porque es una funcionalidad. 
+
+Pasos a seguir:
+Crear clases.
+Que clases estan unidas con otras.
+Multiplicidades
+¿compuesto por?
+tipo línea 
+métodos y atributos
+
+Estados:
+Si pones un estado que sea enviado o recogido, no hay que poner enviar o recoger como metodos
+Si en vendido pones una condición de salida como devolver, no hay que poner After 15 days[no devolución].
+Lo que tendrías que hacer es quitar eso, y poner como otra condición de salida After 15 days, de manera
+que si se cumplen los 15 días es que no se ha devuelto. Hay metodos como comprobar caja o estado que 
+tendrían que cambiarse por cajaComprobada o estadoComprobado.
+Diferenciar estados iguales como enviado con un EnviadoAlFabricante y EnviadoA...
+Hay que añadir devolución.
+Estados como finalizar compra igual incluye el envio. Por lo tanto no añadirlo.
+En vez de poner no devolver dinero, poner notificar.
+Usar entrys.

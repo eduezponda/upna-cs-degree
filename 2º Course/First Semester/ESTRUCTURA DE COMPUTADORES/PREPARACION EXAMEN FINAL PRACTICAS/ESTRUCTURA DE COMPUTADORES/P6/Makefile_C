@@ -1,0 +1,8 @@
+CC=gcc
+CFLAGS=-Wall -g -m32
+
+bmp_imagen: bmp_imagen.c 
+	$(CC) $(CFLAGS) -o bmp_imagen bmp_imagen.c 
+
+clean:
+	$(RM) test.bmp 

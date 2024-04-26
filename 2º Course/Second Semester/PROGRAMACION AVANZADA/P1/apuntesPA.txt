@@ -1,0 +1,65 @@
+A a = new B();
+a.m() //imprime "I am a B" (la más especifica siempre)
+A a = new A();
+a.m(); //imprime "hi"
+B b = new B();
+b.m(); //imprime "I am a B"
+B b = new A(); //no funcionaria
+
+
+
+class A{
+    void m(){
+        sout("hi");
+    }
+}
+class B extends A{
+    void m(){
+        sout("I am a B");
+    }
+}
+
+//__
+
+A a = new A();
+sout( a.v ); //They have a default value so we see a 0
+
+class A{
+    public int v;
+}
+
+//__
+
+A a = new A();
+A b = a; //Apunta al mismo objeto
+a.v = 3;
+b.v = 5;
+sout( a.v );
+sout( b.v );
+//We will see 5 5
+
+class A{
+    public int v;
+}
+
+//__
+
+sout( a == a ); //True
+sout( a == b ); //False
+sout( a == c ); //True
+sout( a == d ); //False (al comparar string con == dice si apunta al mismo objeto no si la string es igual) --> sout( a.equals(d) ); //True
+
+String a = "hello world";
+String b = "hello moon";
+String c = a;
+String d = "hello world";
+
+//__
+
+/*
+modifications on P1
+use double instead of float
+leave for the end the implementations for
+    getArea();
+    getPerimeter();
+*/

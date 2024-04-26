@@ -1,0 +1,93 @@
+int pid 
+
+pid = fork() -> crear proceso
+pid == -1 error en creación
+pid == 0 hijo
+else -> padre (wait() esperar hijo)
+
+procesos no comparten misma zona memoria (al contrario que hijos)->mecanismos comunicación
+Señales, tuberías, colas mensajes, memoria compartida, semáforos...
+
+#include <sys/types.h>
+#include <unistd.h>
+pid_t getpid(void); (hijo)
+pid_t getppid(void); (padre)
+kill() -> terminar proceso (se hace cuando termina hijo y entra en else padre)
+
+planificador = mecanismo que elige qué hilos se ejecutarán en cada instante. Determina transiciones entre los estados listo y en ejecución de los hilos
+
+selección proceso a ejecutar en función prioridades
+cada nivel de prioridad da lugar a una jerarquía de colas
+
+En un cambio de contexto se debe: (intercambio procesos)
+• almacenar el estado del proceso saliente,
+• cargar el estado del estado entrante,
+• acceder a los registros generales y de estado.
+
+Las decisiones de planificación a corto plazo se pueden deber a:
+1. Un proceso finaliza (ejecutándose a finalizado).
+2. Un proceso se bloquea (ejecutándose a bloqueado).
+3. Un proceso pasa de ejecutándose a ejecutable: un proceso agota el
+cuanto de tiempo asignado.
+4. Un suceso cambia el estado de un proceso bloqueado a ejecutable.
+5. Se crea un proceso.
+
+El planificador a medio plazo se encarga de devolver los procesos a memoria.
+
+Planificador a largo plazo (planificador de trabajos): selecciona los procesos
+que deben llevarse a la cola de preparados.
+• permite controlar el grado de multiprogramación.
+• se invoca poco frecuentemente por lo que puede ser más lento
+
+Planificación no apropiativa (sin desplazamiento): una vez que se le asigna
+el procesador a un proceso, no se le puede retirar hasta que éste
+voluntariamente lo deje, finalice o se bloquee.
+
+• Planificación apropiativa (con desplazamiento): el SO puede apropiarse
+del procesador cuando lo decida.
+
+FCFS (cola) -> orden de llegada -> mala prestaciones con hilos de prioridad
+SJF (shortest job first) -> menor tiempo servicio
+SRJF (shortest remaining job first)
+
+Planificación por prioridad:
+•Mayor prioridad cuanto menor es valor
+•Asignar a CPU proceso con mayor prioridad
+
+Planificación tiempo límite: proceso admitido si y solo si planificador garantiza ejecución resto procesos con su respectivo tiempo límite
+
+Round Robin:
+•Asignación equitativa CPU procesos
+•NO posibilidad inanición
+En función de la implementación,
+• al finalizar la ejecución de un proceso/hilo sin concluir su tiempo asignado, el
+siguiente proceso/hilo lo añadirá a su tiempo de ejecución o simplemente se correrá
+el turno.
+• los procesos nuevos se introducirán en una cola o en un anillo, lo que motivará que
+se ejecuten antes o después que el resto de procesos.
+
+Colas múltiples:
+• División cola en varias
+• Cada cola propio algoritmo planificación 
+• Requiere planificación entre colas
+
+Cálculo periódico prioridad procesos->prior = base + p_cpu(estimación uso más reciente CPU) + p_nice (margen modificación prioridad proceso que dispone usuario)
+p_cpu -> ajuste una vez por segundo
+
+PLANIFICACIÓN LINUX:
+• Basado prioridad simple
+• Tipos proceso: normal y real time (ejecución antes que los normal y suelen tener disciplinas round robin o FIFO)
+• Cada proceso tiene asignada una ventana temporal de 200 msg para su ejecución
+
+Exclusión mutua (dos procesos a la vez no acceden a un recurso (sección crítica)) y sección crítica (métodos)
+Semáforo (zona memoria compartida que almacena entero no negativo sobre el cual se pueden actuar siguientes operaciones)-> evitan espera activa (s nombre semáforo y x número)
+• Inicialización (una sola vez)
+• wait(s) o P() -> si s>o lo decrementa en unidad, y si es 0 lo bloquea hasta que un proceso le envie una señal al semáforo (si hay varios procesos bloqueados en un semáforo, solo uno pasa a listo tras señal) (no se conoce cuál es)
+• signal(s) o V() -> si no hay procesos bloqueados->incremento s en unidad
+                  ->si hay procesos bloqueados -> s=0->provoca transición a listo a uno de los procesos
+paso mensajes (send(destino,mensaje),receive(origen,mensaje))
+envio bloqueante, recepción bloqueante->emisor y receptor bloqueados hasta que llega mensaje
+envio no bloqueante, recepción bloqueante->receptor bloqueado hasta que llega el mensaje  
+p.347          
+
+

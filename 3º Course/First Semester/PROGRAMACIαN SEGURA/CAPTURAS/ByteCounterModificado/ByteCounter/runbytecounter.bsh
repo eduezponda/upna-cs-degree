@@ -1,0 +1,5 @@
+#!/bin/bash
+
+java \
+-Djava.security.manager -Djava.security.policy=./etc/bytecounter.policy \
+-cp ./dist/main.jar:./dist/counter.jar main.App

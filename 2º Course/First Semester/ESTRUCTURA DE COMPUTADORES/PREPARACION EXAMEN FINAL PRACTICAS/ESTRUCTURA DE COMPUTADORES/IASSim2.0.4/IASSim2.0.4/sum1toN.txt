@@ -1,0 +1,13 @@
+ /* 
+   adds up the values N+...+3+2+1 in a loop and puts
+   the result in a variable SUM.
+ */
+
+ INTEGER N = 5
+ INTEGER SUM = 0
+ DO WHILE (N > 0)
+     SUM = SUM + N
+     N = N - 1
+ END DO
+ HALT
+

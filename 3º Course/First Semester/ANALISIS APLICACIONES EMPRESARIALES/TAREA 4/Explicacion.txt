@@ -1,0 +1,17 @@
+Tengo dos archivos python, uno pa leer la info de la url, y otro para realizar el analisis
+estatico con pylint e insertar la informacion en la tabla de la base de datos
+
+En la creacion de la tabla, no hace falta si quieres insertar una fila, añadir el atributo
+messageID porque esta en auto_increment
+
+En el dockerfile de los archivos de python, se tiene que hacer run a los imports, y añades un
+directorio de trabajo exactamente igual a lo que podría tener en docker3, pero en /usr/src/app
+La unica diferencia es que yo en docker3 podria tener más archivos.
+El CMD no se tiene que poner porque en el docker-compose ya especificas los archivos a construir
+en command
+
+Realizas un sleep de 15 segundos porque si te fijas en docker ps -a, el contenedor de python
+puede durar muy poco y que no esté UP, cosa que el de la base de datos está en APP. Con esto
+consigues mantenerlos conectados.
+Los volumes en pythonapp es para que el directorio local esté asociado al del contenedor. Sin
+ello, se crearía informacion.txt únicamente en el contenedor (/usr/src/app)

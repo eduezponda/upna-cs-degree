@@ -1,0 +1,47 @@
+Es un diagrama de clases. No se modela quien realiza las acciones, sino que se realicen. Por lo tanto, si algo referencia
+a criterios de baremo, tendrá que estar en la clase baremo. Lo mismo con vivienda.
+
+Estamos haciendo un diagrama en el que el software tiene que resolver el problema. En un diagrama de casos de uso, si que tiene sentido
+el rol de la clase de Administrador. En el diagrama de clases, no tiene sentido. Bajo el diagrama, podria existir un administrador Pepe1,
+o Juan2... A nosotros nos da igual quien sea el administrador, ni como se llame ni nada. Solo nos interesa que existan las funcionalidades
+que nos piden. 
+PISTA: No hace falta guardar ningún dato/atributo -> CLASE INNECESARIA
+
+No modelamos (dar nombre a) acciones, sino relaciones entre clases
+
+Multiplicidades son contrarias al pensamiento lógico -> CLASE CONTRARIA
+
+
+RELACIÓN PARTE-TODO (forma parte de) -> agregación (composición débil) y composición (composición fuerte)
+
+Agregación roba atributos de la otra clase
+
+Composición -> multiplidad 1 en un lado siempre
+
+Asociaciones ternarias son poco habituales -> Ugaitz las odia -> NO VA A HABER
+
+No modelar con nombre de clases sistema, baes de datos
+
+Nombres clases -> no espacios, no frases
+
+Interfaz -> clase abstracta sin atributos y métodos en común para varias clases
+
+Imagen en YO -> Una vez que se asigne la vivienda -> automáticamente se consigue el certificado
+Ha puesto tambien otra posible solución
+
+Si realmente no ves que tienen una unión muy fuerte, o no te lo dicen explícitamente, todas las relaciones de agregación se pueden hacer
+como relaciones sencillas. Él prefiere relaciones sencillas siempre
+
+No la parece buena dinámica que si se elimina el usuario, se eliminen también las inscripciones -> No eliminar datos -> RELACIONES SIMPLES
+
+ej: te puede interesar para estadísticas (¿cuantas inscripciones tuve en...?)
+
+Enumeracion -> atributos tipo unspecified
+
+datatype = primitive
+
+relacion navegable o no navegable
+
+flecha constraint
+
+se modela la informacion entre clases

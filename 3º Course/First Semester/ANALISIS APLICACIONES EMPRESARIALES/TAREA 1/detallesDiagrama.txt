@@ -1,0 +1,4 @@
+Cada proceso tiene actividades y cada actividad tiene procedimientos. Para los procedimientos se usan preguntas con los triangulos.
+Ejemplo tortilla: tienes ingredientes pa 20 tortillas. 
+La primera vez que cocinas la tortilla preparas la masa para todas las tortillas.
+Para las próximas tortillas que tengas que hacer ya no tendrás que preparar la masa

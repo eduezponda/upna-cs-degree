@@ -1,0 +1,13 @@
+la ha puesto en la pizarra y estaba perfecta. Yo dudo si se tiene que meter los mensajes solicitud de alta aceptada y rechazada desde sistema 
+al usuario para dar reply a gestionar solicitud.
+
+Tengo la opcion del profesor para el ejercicio en YO.
+
+Linea de vida = mensaje + reply
+
+loop -> break --> do - while
+
+de normal siempre hay tres actores
+
+synchronizazed
+interactive use

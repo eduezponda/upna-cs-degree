@@ -1,0 +1,56 @@
+/*La dirección de la empresa decide aplicar las siguientes normas y políticas:
+a. Si se elimina un vendedor, las facturas de la responsabilidad de ese vendedor 
+serán consecuentemente eliminados. Al mismo tiempo, las líneas de facturas 
+de esas facturas eliminadas serán conservadas en la base de datos.*/
+
+/*b. El descuento de las facturas NO deberá ser mayor del 75%. En ningún caso podrá ser nulo. 
+Los valores antiguos de descuento de facturas se actualizarán de la siguiente forma:
+ El valor nulo, y el 0% pasan a ser 1% de descuento en las facturas.
+ Los descuentos de facturas entre el 3% y el 10% inclusive se incrementan en un 70% (*1.7).
+ Y los descuentos de facturas del 11% en adelante se incrementan en un 100% (se doblan *2).*/
+
+--c. Subir un 7% el descuento a todas las líneas de factura que tengan 11 o más cantidad de unidades.
+
+/*d. Crear la tabla 'vendedores_vip' como resultado de una consulta que devuelva los vendedores de 2 clase (codven, clase), 
+que son aquellos que tengan algún artículo con precio > 6000 vendido alguna vez.*/
+
+/*e. Actualizar la tabla para obtener cuales de estos son finalmente de 1 clase, 
+que son aquellos de 2 clase que tengan también algún artículo con precio > 10000 vendido alguna vez.*/
+
+/*Obtener un listado de todos los artículos con descripciones repetidas 
+(no debemos mostrar ninguna descripción de artículo que sea única) 
+mostrando para cada uno de ellos el número de unidades que se hayan vendido 
+(total_unidades_vendidas) y el número de vendedores de líneas de facturas 
+que los hayan vendido (total_vendedores).
+Mostrar el código del artículo y su descripción entre paréntesis 
+junto a los totales anteriores. Ordenar por el código del artículo descendente.
+Nota: En el caso de que no tengan unidades vendidas se 
+deberá evitar mostrar NULL y mostrar 0, usando por ejemplo la función COALESCE.
+
+ARTICULO  TOTAL_UNIDADES_VENDIDAS  TOTAL_VENDEDORES*/
+
+/*Mostrar los compradores (clientes) que han comprado menos de 80000 euros en total 
+y que cumpla la condición de que el nombre del comprador debe comenzar con la letra 'A'.
+NOTA: para calcular la compra tendremos en cuenta solamente la cantidad 
+y el precio indicados en las líneas de factura, sin considerar descuentos ni impuestos (IVA).
+
+COMPRADOR  */
+
+/*Se desea obtener un listado de pueblos que incluya los pueblos donde 
+viven los jefes de vendedores que aplican comisiones superiores al 8%, 
+pero deben excluirse aquellos pueblos en los que vivan clientes que 
+hayan realizado compras con descuento inferior al 12% en las facturas 
+y añadirse aquellos pueblos en los que vivan clientes los cuales en las 
+facturas de hace 5 años (2015) se les aplicó un IVA del 16%.
+Nota: la resolución de esta consulta debe incluir el uso de dos operadores conjuntistas.
+Mostrar el nombre de la provincia y su población entre paréntesis, ejemplo:
+NAVARRA (PAMPLONA).
+Ordenar por el nombre de la población ascendente.*/
+
+/*Obtener un listado de provincias cuya media de descuentos de compras sea superior 
+al de la media de descuentos de entre todas las facturas 
+(cada factura de un cliente se considera una compra). 
+Mostrar el nombre de la provincia y la media de descuentos de compras 
+ordenado por nombre de la provincia alfabeticamente al contrario y 
+por media de descuentos de compras ascendentemente. PROVINCIA DTO_MEDIO_COMPRAS*/
+

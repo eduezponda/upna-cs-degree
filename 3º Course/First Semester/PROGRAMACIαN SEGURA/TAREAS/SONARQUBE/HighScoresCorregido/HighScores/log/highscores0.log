@@ -1,0 +1,8 @@
+mié nov 15 20:29:44 CET 2023 highscores.EncryptPassword doBytesEncryptedData 
+ GRAVE: null 
+java.io.IOException: File does not exists in the target directory
+	at highscores.EncryptPassword.inicialiseKey(EncryptPassword.java:84)
+	at highscores.EncryptPassword.doBytesEncryptedData(EncryptPassword.java:41)
+	at highscores.HighScoresDBSubsystem.<init>(HighScoresDBSubsystem.java:57)
+	at main.HighScores.main(HighScores.java:38)
+ 

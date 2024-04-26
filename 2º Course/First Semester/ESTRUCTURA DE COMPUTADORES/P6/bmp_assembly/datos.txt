@@ -1,0 +1,8 @@
++layout split
++n
++s
++n
++n
++n
+[Inferior 1 (process 6800) exited with code 01]
++exit

@@ -1,0 +1,79 @@
++shell ls -l sum1toN_gdb_asm.txt
++file sum1toN   ->abrir archivo en gdb
+Reading symbols from sum1toN...
++info sources  ->información de las fuentes
+/home/eduardo/Descargas/sum1toN:
+
+/home/eduardo/Descargas/sum1toN.s
+
++b _start ->break point en el que comenzar el programa
+Punto de interrupción 1 at 0x1000: file sum1toN.s, line 17. ->_start está en la línea 17
++run ->ejecutar programa
+Starting program: /home/eduardo/Descargas/sum1toN 
+
+Breakpoint 1, _start () at sum1toN.s:17
++ptype n ->imprimir en pantalla el tipo de n
+type = <data variable, no debug info> ->nos muestra que n es una variable
++p n
+'n' has unknown type; cast it to its declared type
++n
++p (int) n ->imprimir en pantalla el valor de n, en el que hay que castearlo a entero al ser una etiqueta
+$1 = 5
++n  ->con el comando n(next) pasamos a la siguiente línea del programa
++n
++x &n   ->examinar n (dirección de memoria)
+0x56558000:	0x00000005
++x /1bw &n  ->examinar n en formato    
+0x56558000:	0x00000005
++n
++n
++n
++n
++n
++p $ecx   ->imprimir el valor del registro ecx
+$2 = 9
++p $edx ->imprimir el valor del registro edx
+$3 = 3
++until
++info registers  ->imprimir el valor de los registros
+eax            0xf7ffda40          -134227392
+ecx            0xc                 12
+edx            0x3                 3
+ebx            0xf7ffd000          -134230016
+esp            0xffffd1e0          0xffffd1e0
+ebp            0x0                 0x0
+esi            0xffffd1ec          -11796
+edi            0x56556000          1448435712
+eip            0x5655600d          0x5655600d <bucle+2>
+eflags         0x206               [ PF IF ]
+cs             0x23                35
+ss             0x2b                43
+ds             0x2b                43
+es             0x2b                43
+fs             0x0                 0
+gs             0x63                99
++layout split  ->ensamblador(direcciones de memoria)
++focus cmd  ->pantalla abajo
+Focus set to cmd window.
++focus src  ->pantalla arriba
+Focus set to src window.
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
+[Inferior 1 (process 15290) exited with code 017]
++start ->comenzar de nuevo el programa
+Función «main» no definida.
+Conteste «y» o «[n]».
+Punto de interrupción temporal 2 (-qualified main) pendiente.
+Starting program: /home/eduardo/Descargas/sum1toN 
+
+Breakpoint 1, _start () at sum1toN.s:17
++exit ->salir del gdb

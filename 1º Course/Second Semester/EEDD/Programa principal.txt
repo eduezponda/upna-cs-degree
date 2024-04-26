@@ -1,0 +1,126 @@
+// Programa: .c
+// Eduardo Ezponda
+// 20/05/22
+/*El siguiente programa */
+
+#include <stdio.h>
+#include <string.h> -> strlen(s)
+#include <stdlib.h>
+#include <stdbool.h> -> bool b; b=false;
+#include <math.h>
+
+#include ".h"
+
+#define N 6
+
+typedef char vector[N]; -> Las tablas se definen por posiciones, y en c se empieza en el 0
+typedef enum {FALSE = 0, TRUE = 1}boolean; ->boolean b; b=FALSE;
+typedef float/char matriz [N] [N];
+typedef struct nombre
+{
+	...
+}Nombre; -> se puede poner nombre en las dos
+
+char saludo1[10] = {'H','o','l','a','\0'}; ->una comilla es un caracter, doble comilla es string
+char saludo2[] = "Hola";
+
+int main(void)
+{
+	File *f;
+	char s[30];
+
+	
+      	char s[30];
+      	vector v1;
+	int i,x;
+	char res;
+
+      	printf("Programa: .c\n");
+      	printf("Eduardo Ezponda\n");
+ 	printf("20/05/22\n");
+	printf("El siguiente programa \n");
+
+	do
+	{
+
+		printf("Escriba el nombre de fichero a tratar:\n");
+		scanf("%s",s);   ->sin &
+		
+		while ((f=fopen(s,"wb"))==NULL)
+		{	
+			printf("El nombre es incorrecto, introducelo de nuevo\n");
+			scanf("%s",s);
+		}
+
+		f=fopen(s,"wb" o "w"); ->fichero de escritura binario/no binario
+		g=gopen(s,
+		fwrite(&x,sizeof(int),1,f);
+		fclose(f);
+		
+
+		f=fopen(s o "primos.int","rb" o "r");  ->fichero de lectura binario/no binario
+		fread(&x,sizeof(int),1,f);
+		feof(f);
+		
+		for(i=0;i!= i<=; i=i+1)
+		{
+			for()
+			{
+			}
+		}
+		if, else, else if, while
+
+		scanf(" %c","%d","%.2f");
+		
+		printf("¿Deseas continuar? s/n\n");
+		scanf(" %c",&res);
+	
+
+	}while (res == 's' || res == 'S');
+
+	return 0;
+}
+
+acciones/funciones
+
+gcc -c nombre.c -Wall	->nombre.o
+gcc programa.c -o programa -Wall
+echo -n "..." > s
+
+
+gcc nombre.c modulos.o .... -o nombre -Wall
+
+NO UTILIZAR NUMEROS EN VEZ DE CONSTANTES
+
+PRACTICA 2 ->lector fichero de enteros y binario
+mod = %
+
+COMPROBACIONES FICHEROS:
+
+f = fopen(nombre, "r");
+    
+    if ((f = fopen(nombre, "r")) != NULL)
+    {
+        printf("Fichero abierto CORRECTAMENTE \n");
+    }
+    else
+    {
+        printf("ERROR! Fichero sin abrir.\n");
+    }
+
+    fclose(f);
+    
+    if(fclose(f) == 0)
+    {
+        printf("Fichero sin cerrar. \n");
+    }
+    else
+    {
+        printf("Fichero cerrado CORRECTAMENTE. \n");
+    }
+
+CASTEAR (convertir a entero,caracter...)
+-(char)num, (int)pi
+
+Si haces las acciones/funciones debajo del programa, las tienes que declarar antes arriba
+

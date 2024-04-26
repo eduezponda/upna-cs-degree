@@ -1,0 +1,11 @@
+COSAS QUE IMPLEMENTAR:
+
+-CAMBIAR NUMERO PREGUNTAS PA FINALIZAR
+-QUITAR PRINTS
+-ARREGLAR LABEL PA PRINTEAR VICTORY
+-REVISAR TXT CLEAN CODE
+
+label -> anchor -> horizontal and vertical (poner mensaje en el centro)
+Control r
+Control espacio
+label ->properties -> icon

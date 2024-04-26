@@ -1,0 +1,14 @@
+Si te dice estado compuesto hay que ponerlo obviamente
+La solución tiene que ser sencilla y visual -> pero eso en toda la asignatura
+Lo más probable si pones un estado de inicio en el estado compuesto, es que haya tambien estados finales dentro
+Si sales del estado compuesto, tiene que haber una salida a través de un evento
+Bucle = estado con una transición a si mismo
+El estado compuesto tiene que reflejar todas las transiciones, no solo unas cuantas
+El punto de enlace del evento que saca fuera del estado compuesto esta mal puesto. No hay q poner el punto de enlace (circulo con cruz)
+El gran problema de la practica ha sido no saber modelar el texto de forma simple
+Solucion en YO
+Inscripcion anulada como evento para salir del estado compuesto
+
+[Verificación] --< Datos incorrectos [Nºintentos < 3]
+		-> Datos correctos -> [Baremable]
+		-> Datos incorrectos [Nºintentos=3] -> No Baremable -> FIN (dentro estado compuesto)

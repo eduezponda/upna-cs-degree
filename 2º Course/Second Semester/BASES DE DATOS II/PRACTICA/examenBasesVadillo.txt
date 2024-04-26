@@ -1,0 +1,241 @@
+1)
+Muestra el código de la comunidad y el nombre en euskera de las comunidades que tengan
+algún biker nacido despúes del 02/03/82, añadiendo a este primer conjunto las comunidades
+resultantes de quitar las que tengan algún equipo dentro de las categorías ('ELITE','F-M30','F-ELI'),
+a las que tengan alguna sede con longitud menor a 7100 metros.
+Ordena el resultado por el código de la comunidad ascendentemente y por el nombre en euskera descendentemente
+
+Nota: la resolución de este ejercicio debe incluir el uso de al menos dos operadores conjuntistas.
+
+
+select cod_comu, nombre_eus
+from comunidades
+join bikers using(cod_comu)
+where fecha_nacimiento > '02/03/82'
+union
+(select cod_comu,nombre_eus
+from comunidades
+join sedes using(cod_comu)
+where longitud < 7100
+minus
+select cod_comu,nombre_eus
+from comunidades
+join equipos using(cod_comu)
+where categoria in ('ELITE','F-M30','F-ELI'))
+ORDER BY COD_COMU,NOMBRE_EUS;
+
+
+
+
+
+
+2)
+Obtén un listado en el que aparezcan todas las comunidades de la base de datos, mostrando para cada una de ellas
+el código de comunidad, el nombre en euskera y el número de las carreras antes del 27/10/21
+en sedes de cada comunidad como CARRERAS_SEDES.
+Ordenado por CARRERAS_SEDES descendentemente.
+Nota: Si alguna de las comunidades no tuviera carreras que cumplan esos criterios debe aparecer en el listado con 0.
+
+
+SELECT COD_COMU, NOMBRE_EUS, COUNT(COD_CARRERA) AS CARRERAS_SEDES
+FROM COMUNIDADES
+LEFT JOIN SEDES USING(COD_COMU)
+LEFT JOIN CARRERAS ON (SEDES.COD_SEDE = CARRERAS.COD_SEDE AND FECHA_CARRERA < '27/10/21')
+GROUP BY COD_COMU,NOMBRE_EUS
+ORDER BY CARRERAS_SEDES DESC;
+
+
+3)
+a) Primero crea una vista BIKERS_MAYOR_TIEMPO que para cada biker muestre su nombre y el mayor de los tiempos
+de llegadas en una carrera de 5 vueltas como MAYOR_TIEMPO.
+
+CREATE OR REPLACE VIEW BIKERS_MAYOR_TIEMPO
+AS
+SELECT BIKERS.NOMBRE, MAX(TIEMPO_LLEGADA) AS MAYOR_TIEMPO
+FROM BIKERS
+JOIN PARTICIPACIONES USING (COD_BIKER)
+JOIN CARRERAS USING (COD_CARRERA)
+WHERE VUELTAS = 5
+GROUP BY BIKERS.NOMBRE;
+
+b) a continuación utiliza la vista BIKERS_MAYOR_TIEMPO para mostrar los datos que nos devuelve la vista del
+biker o bikers con el mayor MAYOR_TIEMPO.
+SELECT *
+FROM BIKERS_MAYOR_TIEMPO
+WHERE MAYOR_TIEMPO = (
+SELECT MAX(MAYOR_TIEMPO)
+FROM BIKERS_MAYOR_TIEMPO);
+
+
+
+4)
+Puebla las tablas con prefijo BTT_MTT_ que tenemos vacías en nuestra BBDD insertando en ellas los datos
+que están disponibles en las tablas sin prefijo. Por ejemplo puebla BTT_MTT_BIKERS insertando los
+datos de la tabla BIKERS y así con el resto. (Para evitar problemas accediendo a esquemas se incorporan
+estas tablas vacías con prefijo BTT_MTT_ que simulan el esquema BTT_MTT.)
+
+a) primero deberás proporcionar un alias más corto y manejable para las tablas que comienzan por BTT_MTT
+creando sinónimos que incluyan el prefijo 'v', para utilizarlos para realizar las inserciones.
+Por ejemplo, vBIKERS será el sinónimo de BTT_MTT_BIKERS. Crea sinónimos para todas y cada una de
+las tablas que comienzan por BTT_MTT_.
+
+CREATE SYNONYM vBIKERS FOR BTT_MTT_BIKERS;
+CREATE SYNONYM vCARRERAS FOR BTT_MTT_CARRERAS;
+CREATE SYNONYM vCOMUNIDADES FOR BTT_MTT_COMUNIDADES;
+CREATE SYNONYM vEQUIPOS FOR BTT_MTT_EQUIPOS;
+CREATE SYNONYM vPARTICIPACIONES FOR BTT_MTT_PARTICIPACIONES;
+CREATE SYNONYM vPERTENENCIAS FOR BTT_MTT_PERTENENCIAS;
+CREATE SYNONYM vSEDES FOR BTT_MTT_SEDES;
+CREATE SYNONYM vTEMPORADAS FOR BTT_MTT_TEMPORADAS;
+
+DROP SYNONYM vPERTENENCIAS;
+
+b) luego deberás crear varias secuencias que vamos a necesitar para poder insertar datos en las tablas vacías,
+ya que hay 3 tablas de las vacías que cuentan con una clave sustituta o artifical que rellenaremos usando la
+correspondiente secuencia:
+- Crea una secuencia sin añadir cláusulas, con todos sus valores por defecto, para generar los COD_PERTENEN,
+que usaremos al insertar las PERTENENCIAS.
+- Crea otra secuencia que se inicie en -1 sea descendente y no tenga límite inferior para generar los COD_PARTICIPA,
+que usaremos al insertar las PARTICIPACIONES.
+- Y crea otra secuencia que comience en 300, se incremente de 40 en 40, con valor máximo 4300 y que
+continue generando valores cuando alcance el máximo para generar los COD_TEMP, que usaremos al insertar
+las TEMPORADAS.
+
+CREATE SEQUENCE SEQ_COD_PENTEN;
+CREATE SEQUENCE SEQ_COD_PARTICIPA
+START WITH -1
+INCREMENT BY -1;
+CREATE SEQUENCE SEQ_COD_TEMP
+START WITH 300
+INCREMENT BY 40
+MAXVALUE 4300
+CYCLE;
+
+c) finalmente puebla las tablas vacías BTT_MTT_ usando sus sinónimos, insertando los datos que tenemos en las
+tablas sin prefijos. En los casos de las tablas que no tengas los correspondientes nuevos códigos a insertar
+usa las secuencias creadas generando los códigos correspondientes.
+Nota : Sigue el orden adecuado a la hora de rellenar las tablas para no violar las restricciones de
+integridad referencial.
+
+INSERT INTO vCOMUNIDADES SELECT * FROM COMUNIDADES;
+INSERT INTO vBIKERS SELECT * FROM BIKERS;
+INSERT INTO vSEDES SELECT * FROM SEDES;
+INSERT INTO vEQUIPOS SELECT * FROM EQUIPOS;
+INSERT INTO vTEMPORADAS SELECT SEQ_COD_TEMP.NEXTVAL, ANO,SISTEMA_PUNTOS FROM TEMPORADAS;
+INSERT INTO vCARRERAS SELECT * FROM CARRERAS;
+INSERT INTO vPERTENENCIAS SELECT SEQ_COD_PENTEN.NEXTVAL,ANO,COD_BIKER,CODIGO_EQ,ROL FROM PERTENENCIAS;
+INSERT INTO vPARTICIPACIONES SELECT SEQ_COD_PARTICIPA.NEXTVAL,COD_CARRERA,COD_BIKER,POSICION_LLEGADA,TIEMPO_LLEGADA FROM PARTICIPACIONES;
+
+5)
+Queremos almacenar el número de carreras de cada sede. Para ello, ejecuta la siguiente sentencia
+ALTER TABLE SEDES ADD (num_carreras NUMBER DEFAULT 8 NOT NULL); para crear un campo num_carreras en la
+tabla SEDES que sea obligatorio y con el valor 8 por defecto.
+a) Actualiza con una sóla sentencia de actualización el número de carreras de cada sede con los datos que
+hay en este momento en la base de datos.
+
+UPDATE SEDES SET NUM_CARRERAS =(SELECT numCarreras from
+(SELECT COD_SEDE,COUNT(COD_CARRERA)AS numCarreras
+FROM SEDES FULL JOIN CARRERAS USING (COD_SEDE)
+GROUP BY COD_SEDE) AUX
+where SEDES.COD_SEDE = AUX.COD_SEDE);
+
+
+
+b) Aplica una solución para que el número de carreras se actualice automáticamente para cualquier manipulación
+de carreras (ya sea una inserción, una eliminación o una actualización).
+DROP TRIGGER ACTUALIZAR;
+CREATE OR REPLACE TRIGGER ACTUALIZAR
+AFTER UPDATE OR INSERT OR DELETE ON CARRERAS
+BEGIN
+UPDATE SEDES SET NUM_CARRERAS =(SELECT numCarreras from
+(SELECT COD_SEDE,COUNT(COD_CARRERA)AS numCarreras
+FROM SEDES FULL JOIN CARRERAS USING (COD_SEDE)
+GROUP BY COD_SEDE) AUX
+where SEDES.COD_SEDE = AUX.COD_SEDE);
+END;
+/
+c) Inserta una nueva carrera y comprueba que el número de carreras de sede se incrementa.
+Cambia esa misma carrera de sede y comprueba cómo el número de carreras de cada respectiva sede se actualiza.
+Elimina esa misma carrera a continuación y comprueba cómo el número de carreras de sede se reduce.
+
+INSERT INTO CARRERAS (COD_CARRERA, ANO, FECHA_CARRERA, NOMBRE_CARRERA, VUELTAS, COD_SEDE) VALUES (150, 2020, '14/10/2020','Open Villa de Peralta',4,2);
+
+Nota 1: Si no consigues actualizar los datos, trabaja el resto del ejercicio con
+los valores por defecto obtenidos.
+Nota 2: También se evaluan los SQLs indicados para realizar las comprobaciones.
+Nota 3: Si consigues emplear un único disparador obtendrás 0,20 ptos extra para la nota final de la prueba,
+estos enlaces pueden ser de ayuda en caso de intentarlo:
+https://oracle-base.com/articles/misc/database-triggers-overview
+https://stackoverflow.com/questions/2965521/oracle-and-triggers-inserted-updated-deleted
+
+
+
+6)
+Para una integración entre dos aplicaciones se requiere cacheo, alta disponibilidad y externalización de la
+lógica de negocio y se opta por compartir una tabla replicándola entre las bases de datos de forma síncrona.
+
+A modo de entorno de pruebas prepararemos la replicación de una tabla en nuestra base de datos local, de
+tal forma que cuando funcione se trasladará la solución para replicarla en la base de datos de la aplicación.
+
+En concreto vamos a replicar la tabla COMUNIDADES, manteniendo sincronizada dicha réplica siguiendo estos pasos:
+
+a) Crea la tabla de réplica COMUNIDADES_REPLICA a partir de la consulta de la tabla origen COMUNIDADES, añadiendo un
+atributo FECHA_REPLICA usando la función SYSDATE y así comenzar con los datos inciales replicados, tal como
+quede la tabla réplica (no es necesario añadir ninguna restricción de las que tiene la tabla origen).
+
+CREATE TABLE COMUNIDADES_REPLICA
+(
+COD_COMU CHAR(2),
+NOMBRE_ESP VARCHAR2(100) NOT NULL,
+NOMBRE_EUS VARCHAR2(100) NOT NULL,
+NOMBRE_ENG VARCHAR2(100) NOT NULL,
+FECHA_REPLICA DATE DEFAULT SYSDATE
+);
+
+
+INSERT INTO COMUNIDADES_REPLICA(COD_COMU,NOMBRE_ESP,NOMBRE_EUS,NOMBRE_ENG) SELECT * FROM COMUNIDADES;
+
+En caso de no conseguir crea la réplica anterior del modo planteado, crea al memos la tabla
+vacía ejecutando la siguiente sentencia, para poder crear el replicador:
+
+CREATE TABLE COMUNIDADES_REPLICA (
+COD_COMU CHAR(2),
+NOMBRE_ESP VARCHAR2(100) NOT NULL,
+NOMBRE_EUS VARCHAR2(100) NOT NULL,
+NOMBRE_ENG VARCHAR2(100) NOT NULL,
+FECHA_REPLICA DATE
+);
+
+b) Crea el replicador para que al manipular (insertar, actualizar o borrar) algún dato de la tabla origen
+COMUNIDADES se produzca la misma manipulación en la tabla réplica COMUNIDADES_REPLICA, es decir:
+En caso de inserción en la tabla origen COMUNIDADES: realizar la misma inserción incluyendo la fecha de la
+réplica en la tabla réplica COMUNIDADES_REPLICA.
+En caso de actualización en la tabla origen COMUNIDADES: realizar la misma actualización incluyendo la fecha de
+la réplica en la tabla réplica COMUNIDADES_REPLICA.
+En caso de eliminación en la tabla origen COMUNIDADES: realizar la misma eliminación en la tabla réplica COMUNIDADES_REPLICA.
+;
+CREATE OR REPLACE TRIGGER ACT_COM_REP
+AFTER INSERT OR DELETE OR UPDATE ON COMUNIDADES
+FOR EACH ROW
+BEGIN
+CASE
+WHEN INSERTING THEN
+INSERT INTO COMUNIDADES_REPLICA VALUES (:NEW.COD_COMU,:NEW.NOMBRE_ESP,:NEW.NOMBRE_EUS,:NEW.NOMBRE_ENG,SYSDATE);
+WHEN UPDATING THEN
+UPDATE COMUNIDADES_REPLICA SET COD_COMU = :NEW.COD_COMU, NOMBRE_ESP = :NEW.NOMBRE_ESP, NOMBRE_EUS = :NEW.NOMBRE_EUS, NOMBRE_ENG = :NEW.NOMBRE_ENG,FECHA_REPLICA = SYSDATE
+WHERE COD_COMU = :NEW.COD_COMU;
+WHEN DELETING THEN
+DELETE FROM COMUNIDADES_REPLICA WHERE COD_COMU = :OLD.COD_COMU;
+END CASE;
+END;
+/
+
+
+c) Comprueba que el replicador funciona correctamente con las 3 manipulaciones(insertando, actualizando y
+eliminando) sobre la tabla origen COMUNIDADES. Y comprobando que se producen las mismas manipulaciones en la
+tabla réplica COMUNIDADES_REPLICA.
+Escribe el código que utilizas para realizar las manipulaciones y comprobaciones ya que también se evalua.
+
+INSERT INTO COMUNIDADES (COD_COMU, NOMBRE_ESP, NOMBRE_EUS, NOMBRE_ENG) VALUES ('UP', 'Navarra','Nafarroa','Navarre');
+UPDATE COMUNIDADES SET NOMBRE_ESP = 'SUBNORMAL' WHERE COD_COMU = 'UP';
+DELETE COMUNIDADES WHERE COD_COMU = 'UP'

@@ -1,0 +1,130 @@
+
+
+java -cp IASSim2.0.4.jar:jhall.jar:IASSimHelp2.0.jar iassim.Main -m IAS.cpu
+
+gcc -m32 -g -o sum1toN sum1toN.s
+
+gcc -m32 --save-temps -nostartfiles -g -o sum1toN sum1toN.s   -> -g = debuggear
+
+echo $?
+
+
+ls -las
+
+gdb  -> control x; control a
+
+file sum1toN
+
+focus cmd -> pantalla abajo
+focus src ->pantalla arriba (además te puedes mover con las flechas)
+
+añadir break point(donde empieza el programa) : b "primera_linea_programa"
+iniciar programa -> run
+
+set trace-commands on   ->justo despues del gdb
+set logging file sum1toN_gdb.txt -> crear fichero con comandos
+set logging on
+n -> next
+p sum ->print sum   p (int) n o p $n
+
+layout split -> ensamblador (direcciones de memoria)
+
+pwd ->present word directory
+
+-gstabs ->para guardar las tablas de simbolos
+
+p $ecx
+n,n, p $edx
+
+printear bucle?? p bucle no es una variable, es una dirección de memoria
+x &n ("lupa dirección de memoria") ->de la etiqueta n, dime que valor tiene
+x /4xw &n ->examina direccion de memoria &n, 4 palabras/bytes en formato hexadecimal
+  /4ow &n ->en octal
+  /4tb &n ->en binario
+  
+b_start
+
+info registers
+exit
+start 
+c
+
+p.300, p.338 (343) ->instrucciones
+
+x /t &da1  (binario)   //LITTLE ENDIAN (se escriben al revés tamaños superiores a 1 byte)
+x /x &da1  (hexadecimal)
+x /1xb  (1 byte en hexa)  x /d en signed decimal  x /u en unsigned decimal
+x /1xh (media word) y si no w
+   
+con el print se puede hacer lo mismo q con examinar solo que con punteros
+/s finalizacion string
+(char *) casteo con puntero
+p /s (char*) &men1 muestra hasta que termine la string
+x /5xb &da4 muestrame 5 bytes en formato hexadecimal
+
+2 acciones no salen pero a el si, una printea 1 (no se si direccion o primer valor) y otra contenido
+creo q es por el formato debugger
+otra accion q no va, que es x /x&lista+1
+p /x (*)(&lista+1) ->una posicion memoria y otra contenido
+p /a (int *) &lista + 1 esta bien por el casteo de entero, cosa que el void no
+casteo a enteros de las primeras 5 posiciones de lista p(int[5])lista
+printea contenido segunda pos p /x *(&lista+1) o p *((int*)&lista+1) o x /dw (int*)&lista+1->la segunda y tercera funciona 
+p *(int*)&lista@5 ->contenido lista
+
+compilacion manual ->as --32 -gstabs -o datos_sufijos.o datos_sufijos.s // -gstabs (añadir tabla simbolos)  y ld -melf_i386 -o datos_sufijos datos_sufijos.o
+
+diferentes tipos de registros
+
+necesito saber un comando para abrir ventana Register group: general ->layout regs
+mirar registro eflags, y lo que se modifica en cada comando
+
+bt ->informacion funciones
+step -> entrar funcion y luego finish
+
+set $pc=&main ->set contador programa con la direccion del main
+info frame, layout regs
+PC(derecha en pequeño) : direccion linea programa correspondiente
+
+lshw -X y lshw | more
+sudo dmidecode -t system
+
+representacion de las instrucciones -> 14,15,16,17
+representacion datos pag 88
+
+showkey -a 
+man ascii
+
+pag 84 registros tamaño
+movsbl %al,%ebp  ->extensión signo -> movs b (tamaño registro fuente %al) l (tamaño registro destino %ebp)
+byte,word, long, quad 1,2,4,8
+
+short es dos bytes (word tbn)
+
+./op_arit; echo $? ->aquí se printea en la pantalla del terminal lo que devuelve el registro ebx al final del programa
+
+watch $eflags ->te printea por pantalla cuando cambian los eflags con el resultado anterior y el actual
+
+gcc -m32 -o salida salida.c
+./salida
+
+nano ejemplo.s (o punto lo que sea)
+echo $?
+
+pag 364 libro
+
+ptype buffer (mostrar struct)
+finish (salir función)
+s (step) (entrar función)
+
+RGB_data buffer[][] ->declaración RGB_data ->struct de 3 bytes r,b,g
+
+p /a &buffer ->printea dirección buffer
+x /xb &buffer ->examina primer bit en hexadecimal de buffer
+x /x (RGB_data *) &buffer
+x /3xb &buffer
+x /3xb &buffer [0][0]
+p /x buffer[0][0]
+p /x buffer[0][0].r
+p /x *(char *)&buffer[0][0] ->doble puntero y ampersán (printea contenido buffer[0][0])
+p /a (char *)&buffer[0][0] -> un puntero y ampersán (printea dirección)
+p /x *((char *)&buffer+64*512+64)

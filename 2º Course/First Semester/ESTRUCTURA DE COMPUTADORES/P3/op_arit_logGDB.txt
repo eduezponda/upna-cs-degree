@@ -1,0 +1,48 @@
++focus cmd
+Focus set to cmd window.
++layout regs
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++nn
+orden indefinida: «nn». Intente con «help»
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++p $eax
+$1 = -241
++p /t $eax
+$2 = 11111111111111111111111100001111
++p /t $ebx
+$3 = 11110001
++n
++n
++n
++n
++exit

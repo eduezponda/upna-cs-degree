@@ -1,0 +1,396 @@
+ZIP SORTING SERVICE (cambiar la linea de codigo que esta comentada por la otra y asi pruebas el otro archivo)
+
+los cierres del stream causan el cierre del socket
+los try te aseguran que se cierran los sockets y streams si los creas dentro
+si pasa el logger es que no ha habido ningun fallo
+start ejecuta metodo run
+pasar el socket como atributo de la clase para poder usarlo en el metodo run
+utilizamos el executor auxiliar para ver si se conectan sockets (lo ponemos en el objeto tipo future)
+con el future.get esperamos el tiempo que queramos para ver si se cumple
+si salta la excepcion es que no se ha recibido ninguna petición en ese tiempo
+puede que se haya conectado en ese tiempo pero no le de en 10 msg o menos a completar dicha tarea -> SALTA TIMEOUT
+con la doble comprobacion se mira que se cumplan ambas para ver si ha terminado la tarea, no solo se ha conectado con el servicio
+el submit hace que si el servicio no tiene ninguna hebra libre, encola la tarea
+el servicio puede terminar (isShutDown()=true) pero con tareas pendientes (tmb se para el ejecutor si ejecutas la funcion)
+necesitas un bucle final para terminar las peticiones encoladas que no le ha dado tiempo a terminar (isTerminated())
+la hebra del stop es independiente del run debido a que puede haber varias hebras de run (la clase implementa Runnable)
+
+PRIMER TEMA (validación de entrada)
+UTF-8: representar caracteres en secuencias de bytes
+PASOS: (recibir, normalizarla,sanearla, procesarla, validarla)
+dll: bibliotecas dinámicas de Windows
+
+sanitizationExamples
+proyecto(taza cafe) -> properties -> jdk 11
+system.getProperty te da la dirección al consultar al sistema operativo (system) (mirar en pestaña Files(tipo Projects))
+se cierran los ficheros al terminar el try
+
+charset, UnsanitizedInput.java (xssattack1 y xssattack2) -> seguir pasos apuntes para la validación de la entrada
+tmb SanitizedInput en xssattack2 (sigue pasos de forma correcta)
+
+utf8-16-32 -> misma información pero distintas formas de interpretarla
+si utilizas apache los files se guardan en data
+puedes poner varias creaciones de streams en el try dentro para cerrarlas automáticamente al salir
+el metodo read de un filereader devuelve el numero de caracteres que lees ( si no -1 )
+diff en terminal te dice si son iguales (data->tools->open in terminal-> diff file1.txt file2.txt)
+
+explicación UnsanitizedInput (xmlinjection)
+
+1</quantity><price>0.0</price><quantity>1  ->esto ha insertado el profesor y funciona (como cantidad)
+
+<item>
+<articleId>...</articleId>
+<quantity...</quantity>
+<price>...</price>
+<quantity>..</quantity>
+<price>...</price>
+</item>
+
+explicacion SanitizedInput (xmlinjection) -> no se puede insertar lo de antes porque no se puede parsear a entero
+
+enfoque de lista negra = BLACKLIST (buscar en la entrada todo aquello que pueda estar prohibido)
+enfoque de lista blanda = WHITELIST (cumple con una determinada estructura (no siempre se puede hacer))
+
+explicacion InputPatter (regex)
+REGEX...:
+^...$ -> tiene que cumplir toda la estructura. Si no, podría solo una parte
+* 0 o más caracteres
++ 1 o más caracteres
+? 0 o 1 caracteres
+Lo de 0 caracteres no funciona por la forma en la que se lee la entrada (scanner.nextLine)
+
+"^a{1,5}$" ->longitud minima 1 hasta longitud maxima 5 de caracteres a en el que se tiene que cumplir toda la estructura
+| -> operacion OR (UNION)
+[...] -> meter todos los caracteres que consideres válidos
+"^[ab]+$" ->1 o más caracteres que estén dentro de los caracteres del conjunto (a y b)
+. -> cualquier caracter excepto salto de línea
+"^(?=.*a)(?=.*b).+$" -> tiene que haber al menos una subcadenas que contenga una a y otra que contenga una b. 
+Si no añades ningún operador significa que es conjunción y que se tiene que cumplir todo.
+
+[a-z A-Z 0-9]
+[^a-z] -> el simbolo antes de cualquier conjunto implica negación. Ej: Cualquier caracter que no sea una letra minúscula
+"^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,10}$" -> al menos un digito, letra minuscula y letra mayuscula. Cadena de 6 a 10 caracteres.
+/D ->conjunto de caracteres que no son digitos
+
+parte de la explicación de los caracteres está en InputPattern
+"^(a+)+$" ->que la cadena que busaas se repita una o más veces ( segundo + )
+puede ser que con el parentesis intente siempre comprobar la cadena que lo cumple de mayor tamaño pudiendo hacer una ejecucion exponencial que no termine
+
+explicacion UnsanitizedInput (regexinjection) -> buscar secuencia en un fichero que esta en el apartado data del proyecto
+
+SQLinjection
+poner h2 database en google, instalar pa windows y ejecutar
+usuario:labops
+contraseña:trustnoone
+
+flecha barra tareas, boton derecho en aplicacion h2 y seleccionar open database
+poner esto en database path (siendo studentsDB la base y el resto la direccion)
+C:\Users\Eduardo\Downloads\SQLInjection\SQLInjection\data\database\studentsDB
+
+data está en la ventana de files del proyecto
+
+-luego abrir h2 que te redirije a una web y poner como nombre de la configuracion SQLinjection
+-poner en URL JDBC lo que te sale al crear la base de datos
+jdbc:h2:C:\Users\Eduardo\Downloads\SQLInjection\SQLInjection\data\database\studentsDB
+-ejecutar sentencia creacion tabla
+
+para todo esto he tenido que descargar la terminal de netbeans en internet y he cambiado a jdk12 el netbeans
+si quieres consultar tabla entonces tienes que desconectarte
+
+CREATE TABLE students (ID CHAR(28) PRIMARY KEY, NAME VARCHAR(63), lastname VARCHAR(63), address VARCHAR(63));
+
+
+hay que cerrar muy bien todos los agujeros para que no haya ningún agujero que pueda acceder a la base de datos poco a poco (injection SQL)
+
+'UNION SELECT length(database())== 10; --
+'UNION SELECT substring(database(),1,1) = 'S'; --
+
+pones la comilla al principio para cerrar el otro select. Ejecutar en Query.java
+
+Formas para anular ataque:
+-Sanear entrada
+-Instanciar objetos prepared statement
+
+PreparedQuery.java
+Necesitamos una plantilla con parametros. Tenemos una sentencia incompleta, y aparecen como signos de interrogación los puntos en los que tenemos que insertar información
+Damos valores a los parametros (por defecto se numeran como 1...infinito (Empieza en 1!!). Parte del usuario se interpreta como forma literal y no como lenguaje SQL ('union select...)
+
+Si pruebas a ejecutar los union select, ahora no funcionan al haber usado un prepared statement
+TENGO FOTO EN EL MOVIL DE UN EJEMPLO DE FUNCIONAMIENTO DE PREPAREDSTATEMENT (comilla simple->forma literal)
+
+BatchedUpdate.java
+digest() devuelve 20 objectos en el que usa metodo hash (criptografía)
+Convertirla en Base64 para permitirnos insertar información binaria dentro de documentos XML (se codifica con getEncoder())
+rs devuelve el numero de estudiantes que se han insertado (debe ser 1)
+
+Se evita meter codigo SQL en inserción usando prepared statement en BatchedPreparedUpdate
+Creo que se puede comentar lineas 66, 67 porque no hace falta insertar esos datos
+
+Con base64 vamos a usar configuración basica, url, codificación segura, MIME
+0-63(letras min,mas,digitos 0-9, +, /)
+encoder(), decoder()
+getDecoder(), getEncoder() ->codificación basica
+
+AnnonymousClassExample.java
+el future.get() bloquea hasta que este listo el resultado (pérdida de tiempo (por eso se introduce en get la cantidad de tiempo que quieres esperar))
+toUpper es un servicio muy sencillo que simplemente modifica string a mayúsculas
+
+final Future<String> future = executor.submit(toUpper); -> internamente se tiene que saber que metodos hay que ejecutar en la interfaz
+
+En la tarea 2 hay un punto que hay q usar un submit. Se puede implementar ahi el metodo call como he añadido en la clase en comentarios
+
+LoggerExample1.java
+Registrar información de todos aquellos eventos que sucedan
+Para ello se crean objetos de la clase Logger
+Se registra con metodo log()
+Niveles de gravedad en registros: severe > warning > info > config > fine > finer > finest
+
+Si miras en customize donde ves que archivo quieres ejecutar, te sale en VM OPTIONS la ruta del fichero del logger. El logger esta en el apartado files del proyecto
+No dejar espacios despues del igual del VM OPTIONS
+Hay varias opciones pero para ésta se usa el -D
+
+verla por consola o en el fichero -> (consoleHandler o fileHandler en el directorio que pongas en logging.config(ver file))
+.level = INFO
+#a partir de que nivel registramos. Solo registramos mensajes nivel info o superior
+0,5,.....->info
+1->warning
+2->config
+3,4->severe
+%u -> va cambiando de número
+Registros en formato simple o xml -> java.util.logging.ConsoleHandler.formatter = java.util.logging.(Simple/XML)Formatter
+Mostrar consola y fichero -> handlers = java.util.logging.FileHandler, java.util.logging.ConsoleHandler
+Tambien se puede registrar en clases (B)
+loggerexample.B.handlers = java.util.logging.ConsoleHandler
+loggerexample.B.level = WARNING
+
+listSystemProperties.java -> en etc tienes los permisos comentados -> no tienes permisos -> politica seguridad establecida
+grant{}; obligatorio entre llaves
+permission java.util.PropertyPermission "*", "read,write"; -> leer y modificar propiedades del programa
+permission java.util.PropertyPermission "user.home", "read";
+permission java.util.PropertyPermission "java.home", "read";
+
+cada uno de los permisos tiene que estar implementado en la clase
+
+getSystemProperties.java -> alguna de las propiedades están protegidas. Saltan excepciones si intentas hacer acciones que no tienes permisos
+ir probando cuales puedes realizar dependiendo de los permisos en myapp.policy
+si descomentas las dos ultimas no saltan excepciones
+
+mirar VM options del customize del get y del list
+policy= -> no poner espacio antes del =
+cuidado al escribir los permisos en myapp.policy para descubrir errores
+
+"-Djava security manager " -> poner esto delante del vm options del readfile.java -> hace que no tengas permisos y salte el warning
+vas a etc -> new -> other ->other -> empty file -> añades grant y permisos
+copiar ruta del fichero Ligeia.txt desde properties
+${user.dir} -> dolar significa evaluacion
+permission java.io.FilePermission "C:\Users\Eduardo\Downloads\sesion.20230928\sesion.20230928\FilePermissions\data\Ligeia.txt", "read";
+    = permission java.io.FilePermission "${user.dir}\data\Ligeia.txt", "read";
+    = permission java.io.FilePermission "${user.dir}${\}data${\}Ligeia.txt", "read";
+
+si al ejecutar te pone acceso denied porque no tienes permisos, copiar lo que pone entre parentesis a continuación de access denied, y añadelo al myapp.policy ajustando a la estructura correspondienete para poder meterlo bien al grant {}
+"${user.dir}$(/)data$(/)*" -> con el asterisco determinas permiso a todos los ficheros dentro de data
+tema dolar y barra entre parentesis es para que valga en todos los sistemas operativos (linux y windows). El recomienda aconstumbrarse a ponerlo pa que funcione en ambas
+mirar myapp.policy de file permissions
+
+explica socket permissions y mira client/server.policy
+final ObjectInputStream  is = new ObjectInputStream(fromClientSocket.getInputStream())
+comp = (ComplexCompany) is.readObject()
+Conversion tipo objeto input stream a lo que necesites
+
+permission java.net.SocketPermission "localhost:1024-", "accept";
+habria que ver en el sistema a partir de que puertos se permiten aceptar sockets de conexión (él pone del puerto 1024 en adelante)
+en windows, abres terminal y pones "ip config" ->IPv4
+ip helen: 172.19.71.186
+
+si en cliente te pone al ejecutar que te faltan varios permisos tipo listen o resolver, con poner el permiso listen es sufiente
+void checkPermission(Permission p) -> ver si tienes el permiso
+AccessController.checkPermission(p);
+
+ByteCounter -> Ligeia.txt o ..src/main/App.java (.. -> retroceder de directorio desde data)
+menus son interesantes desde el punto de vista de la seguridad para controlar las entradas
+
+para crear carpeta dist en bytecounter con darle a build en boton derecho en proyecto, o con crear carpeta con ese nombre, vale
+boton derecho en dist, tools, open in terminal -> mirar imagen movil que esta en YO 
+
+Crear archivo compilación -> creas carpeta dish, archivo .sh:
+
+#!b/bin/bash
+javac -d . ../src/bytecounter/*
+jar -cvf counter.jar bytecounter/*
+javac -d . ../src/main//*
+jar -cvf main.jar main.App main/*
+
+c para crear
+f para crear un fichero embalado
+A continuación directorio
+
+Para compilar -> sh archivo.sh
+Ejecutar en terminal archivo runbytecounter.bsh (bsh archivo.bsh)
+
+Mirar bytecounterpolicy, buildsh, runbytecounterbsh
+
+hemos movido la definicion del path y del file de app.java a bytecounter.java para que se defina posteriormente al menú de app.java
+y así haya mayor seguridad porque no se necesita en el main esa parte del programa
+
+tmb se cambia a privado el metodo count en bytecounter para dar seguridad. Se añade un metodo public count manteniendo mismas excepciones.
+Definir una clase anónima para pasar al controlador
+Hay dos clases de acciones privilegiadas
+Mirar método count
+Tmb mirar donde necesitas los permisos en bytecounter.policy -> Ha estado cambiando las cosas en función de cómo modificaba el código
+Todo esto se ha hecho en el ej 1
+ej 2:
+el metodo change y recover no lanza excepciones -> public void -> accion privilegiada tiene que ser PrivilegedAction <Void> -> public Void run() -> AccessController....()-> no hacer return
+
+eim.laboratorio.unavarra -> Pce@6ooAdH -> alumno
+sudo docker images
+sudo docker search ubuntu-> quiero imagenes que se hayan incluido en los repositorios que hayan puesto el comentario ubuntu
+sudo docker pull ubuntu -> para descargarlo
+sudo docker run -it ubuntu -> apt update (cargar lo último) -> apt install default-jre (descargar paquete) -> exit (salir contenedor)
+-it: iterativa en terminal
+run: ejecutar contenedor
+sudo docker images
+sudo docker ps -a
+Un contenedor lo producimos a partir de una máquina virtual
+Creamos una imagen a partir del contenedor "ubuntu" -> sudo docker commit -m "Ubuntu con JRE 11" -a eduezponda cb51b701e8d7 (id contenedor) ubuntujre11 (nombre imagen)
+sudo docker images
+descargar zip byte counter y extraer
+crear directorio dist dentro de bytecounter -> mkdir dist
+entrar en directorio dist 
+javac -d . ../src/bytecounter/* ../src/main/*
+ls bytecounter/
+jar cvfe counter.jar (dar nombre al fichero jar) main.app (archivo java dentro de main) bytecounter/* main/*(añadir lo que quieres embalar)
+jar tvf counter.jar
+Interesa ahora cargar la aplicación en una imagen
+Vamos a preparar un script para la creación de imágenes (docker file)
+Deja dentro del directorio dist el fichero docker -> se crea un empty file/dockerfile dentro de dist llamado Dockerfile
+Mete información dentro del Docker file
+He copiado y pegado el fichero ligeia en dist desde data
+ls 
+sudo docker build -t bytecounter . (ejecutar y le das nombre bytecounter a la imagen)
+sudo docker images (ver nueva imagen bytecounter)
+sudo docker run -i bytecounter (hace falta crear un usuario para que interactue -> interactiva)
+
+apuntes pizarra:
+sudo docker search/pull/commit/images/ps -a/run
+
+sudo docker rm idcontenedor (borrar contenedor)
+descargo zip sesion 20230928 y abro en netbeans el proyecto socket permisissions. Creo directorio dist
+
+cd sesion.20230928/SocketPermissions/dist
+javac -d . ../src/objetos/*
+javac -d . ../src/app/Server.java
+javac -d . ../src/app/Server.java
+jar -cvfe server.jar app.Server objetos/* app/*
+sudo docker built -t server1 .
+sudo docker run -p 1777:1777 server1
+
+mira en eth0 del ifconfig la ip para meterla en Client.java de SocketPermissions del proyecto de mi propio ordenador para conectarse a la máquina virtual
+si da error, borra en VP options la parte del security manager
+opcional (cambiar puerto a 1750)
+
+CREATE TABLE SCORES (ID CHAR(28) PRIMARY KEY, SCORE VARCHAR(63) );
+CREATE TABLE students (ID CHAR(28) PRIMARY KEY, NAME VARCHAR(63), lastname VARCHAR(63), address VARCHAR(63));
+CREATE TABLE students (ID CHAR(28) PRIMARY KEY, NAME VARCHAR(63), lastname VARCHAR(63), address VARCHAR(63));
+
+leer pdfs de vulnerabilidades
+
+webpage
+más herramientas->herramientas para desarrolladores->redes
+mirar paquetes attack (para eso igual es mejor ejecutar el botón del ejercicio para ver en cuerpo el contenido)
+reenviar paquete
+añadir un argumento con el nombre
+modificar cuerpo
+'or'1'='1
+exec -> "comando; comando"
+modificar atributos directamente en los datos del paquete
+tengo las capturas en la carpeta
+
+encriptar = poner informacion en formato para que no se pueda leer
+echo -n "edu" |md5sum -> terminal linux (el -n es pa quitar el salto de linea; md5sum = algoritmo encriptación)
+
+digester en el que hemos hecho metodos digest
+
+PDF y cipher
+si hay algun bloque o objetos que no encripta el cipher en update, esos ultimos bloques se acabaran encriptando en el cipher.doFinal()
+update devuelve bloques
+
+cipher.init -> key (puede ser aleatoria), vector inicialización, modo (encriptar o desencriptar)
+
+a cipher.doFinal hay que pasarle bytes (getBytes()) -> se devuelve un array de objetos -> hacer un cast a new String y charset UTF-8
+
+PARA EL MODELO DE PROCESO ECB -> quitar vectores de inicialización como parametros
+
+final Cipher cipher = Cipher.getInstance("Algoritmo cifrado bloque/Método proceso bloque/Esquema de relleno");
+cuanto mayor sea el numero de iteraciones -> mas segura > mas dificil desencriptar
+mirar los argumentos de stringexampleb
+
+Coger ejemplo fileencripter.java -> linea codigo: final char[] passwd = System.console().readPassword("Introduzca contraseña: ");
+Pasar por terminal la password (antes hay q compilar): javac -d . ../src/ciperconfigurator/*
+						       javac -d . ../src/fileencryption/FileDecryper.java
+					(embalar)	jar -cvf fileencryption.jar  ./cipherconfigurator/* ./fileencription/*
+					(desde ruta cipherExamples)	java -cp dist/fileencription.jar fileencription.FileEncrypter Ligeia.txt(.enc) -> el (.enc) creo q ha probado sin eso, y luego con eso
+						Introducir la contraseña que quieras (fijate que no se printea por pantalla la contraseña)
+					(comparar dos archivos. Si no te dice nada son identicos) diff data/Ligeia.txt data/Ligeia.txt.enc.dec
+								
+Hacer todo en el directorio dist (crea esa carpeta porque si)
+
+Al añadir los objetos Cipher(Input/Output)Stream, no hace falta hacer el update porque ya lo hace internamente
+
+final DeflaterInputStream dis = new DeflaterInputStream(fis); ->objeto que se encarga de comprimir lo leido en objeto fileinputsream
+final CipherInputStream cis = new CipherInputStream(fis, encrypter); ->objeto que encripta lo leido que has comprimido
+Si ves en properties en ligeia.txt.enc al ejecutar el archivo filefilterencrypter.java, si comprimes, la salida en el fichero ligeia es mucho menor en tamaño
+Para descomprimir usas el objeto InflaterOutputStream
+
+Al objeto Cipher le pasas file(in/out)putStream, o le pasas inflater/deflater en funcion de si has comprimido antes con el objeto inflater o no
+Luego, comentas todo lo del try, y añades el metodo transferTo
+
+Vamos a carpeta encryptedtransmission. Cambias client y server para no leer de utf y usar un objeto sellado
+Para eso, hay q cambiar de Data(Input/Output)Stream a Object(Input/Output)Stream
+Luego, hay q crear el objeto sellado (SealedObject) y luego cogerlo con get para hacer el casteo a String
+Es necesario tambien añadir un clause para una exception
+
+
+AnonymousSecureAssociation
+no necesitas una contraseña en comun, ya que pasas el protocolo a traves de final AnonymousSecureAssociation secureAssociation =
+              new AnonymousSecureAssociation(is, os);
+decide la longitud del material secreto quien ejecuta el metodo init (en este caso es el cliente)
+
+CRIPTOGRAFIA CLAVE PRIVADA Y PUBLICA
+tu operas con clave publica que la pasas entre varios, pero la clave privada es para ti porque si no se harian pasar por ti.
+hemos ejecutado el ejemplo de la diapostiva de la sesion del 20/11 y tengo capturas sacadas de la terminal (cls, mkdir, dir).
+He tenido que mover el archivo de ana keystores a bob keystore y viceversa (ana.cert)
+he tenido que copiar el fichero ligeia de otro zip y ponerlo en ana/data
+mirar donde se me crea el jar
+el jar sLigeia.jar se puede enviar perfectamente por todos lados, y bob es el que tiene que verificarlo
+la verificacion se hace con el jarsigner
+
+disco local, usuarios, edu_ezponda, modulo04
+
+ZIP SSL (lo he hecho todo desde el pc de la uni porque el dia anterior tuve problemas con el mio) (tengo el zip en misitio)
+Carpeta Plain
+No garantizas ni integridad (que se modifiquen los mensajes), ni la confidencialidad (pueden ver los mensajes)
+Carpeta SSl
+Hay que crear un keystore para la clave pública -> multiplo de 64 y probablemente mayor que 1024
+Fotos con comandos en recursos misitio(1,2,3.png)
+Se comentan dos lineas tanto en server como en client porque no es necesario siempre que se autentifique el cliente (el quita autentificacion)
+Se comenta truststore y truststore password en server, y keystore y keystore password en client
+Se ejecuta
+
+Luego se comentan las dos lineas restantes de ambas, metiendo en el customize dichas lineas quitando los parentesis y las comillas y metiendo
+el -D y el = y la /
+Se ejecuta
+
+Como no se autentifica al cliente, ahora incluimos su autentificación
+Normalmente se cambia el alias pa no poner el mismo
+Comandos en 4 y 5.png en mi sitio
+Se meten otros dos comandos -D en el customize
+
+El keystore es pa hacer tu clave por asi decir, y el trust es pa guardar el del otro
+La cosa es que la autentificacion o keystore del cliente es opcional, y por tanto el trust del server tambien creo
+Descomentar linea del server de serverSSLSocket.setNeedClientAuth(true); (con esto dices que quieres autentificar al cliente) 
+Me imagino que si no pones nada estará a false
+
+Ahora carpeta parameters
+Echarle un ojo al VM Options y a lo que se printea por pantalla por la clase showSSLParamers
+Se realiza una negociacion pa la criptografía
+

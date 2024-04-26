@@ -1,0 +1,6 @@
+grant codeBase "file:${user.dir}/dist/main.jar{
+    
+};
+grant codeBase "file:${user.dir}/dist/saltmanager.jar{
+    //permission java.io.FilePermission "${user.dir}${/}data${/}*","read";
+};

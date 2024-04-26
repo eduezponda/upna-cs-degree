@@ -1,0 +1,5 @@
+Tlin: 64
+Ncon: 4
+Asoc: 2
+Reem: 1
+

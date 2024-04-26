@@ -1,0 +1,101 @@
+4. Haciendo que un PC haga de router
+  Reverse filtering
+    - sysctl -a | grep "\.rp_filter" -> para ver configuración actual de
+      reverse filtering
+    - sysctl -w net.ipv4.conf.all.rp_filter=0 -> disable all y los que se vaya
+      a utilizar en la práctica
+  Esquema de la red:
+                                       PC C
+                       10.3.arm.129/25┌─────┐10.3.arm.1/25
+                          ┌───────────┤     ├────────────┐
+                          │           └─────┘            │
+                        ┌─┼─┐                          ┌─┼─┐
+                        └─┼─┘                          └─┼─┘
+                          │                              │
+                        ┌─┴─┐                          ┌─┴─┐
+                        │   │                          │   │
+                        │   │                          │   │
+                        └───┘                          └───┘
+                        PC B                           PC A
+                    10.3.arm.130/25               10.3.arm.2/25
+
+  Configruación interfaces:
+    PC C:
+    - ifconfig eth0 10.3.arm.1 
+    - ifconfig eth0 netmask 255.255.255.128 
+
+    - ifconfig eth1 10.3.arm.129 
+    - ifconfig eth1 netmask 255.255.255.128 
+
+    PC A:
+    - ifconfig eth0 10.3.arm.2
+    - ifconfig eth0 netmask 255.255.255.128 
+
+    PC B:
+    - ifconfig eth0 10.3.arm.130 
+    - ifconfig eth0 netmask 255.255.255.128 
+
+  Configurar rutas por defecto:
+    PC B:
+    - route add default gw 10.3.arm.129 eth0 
+    PC A:
+    - route add default gw 10.3.arm.1 eth0 
+
+  Activar forwarding:
+    - sudo forwarding si
+
+5. Topología con dos routers, mezclando Cisco y Linux
+  Esquema de la red:
+                          Router 2                                     PC C
+          ┌───┐10.3.arm.193/26┌─────┐10.3.arm.131/26  ┌───┐10.3.arm.129/26┌─────┐10.3.arm.1/25
+          │   ├───────────────┤     ├─────────────────┤   ├───────────────┤     ├────────────┐
+          └─┬─┘              1└─────┘0                └─┬─┘              1└─────┘0           │
+            │                                           │                                  ┌─┼─┐
+            │                                           │                                  └─┼─┘
+            │                                           │                                    │
+          ┌─┴─┐                                       ┌─┴─┐                                ┌─┴─┐
+      eth1│   │                                   eth0│   │                            eth0│   │
+          │   │                                       │   │                                │   │
+          └───┘                                       └───┘                                └───┘
+          PC B                                        PC B                                 PC A
+      10.3.arm.194/25                             10.3.arm.130/26                     10.3.arm.2/25
+
+  Configuración interface:
+    PC C:
+    - ifconfig eth1 netmask 255.255.255.192 
+    - route add default gw 10.3.arm.131 eth1 
+
+    PC B:
+    - ifconfig eth0 netmask 255.255.255.192 
+    - ifconfig eth1 10.3.arm.194 
+    - ifconfig eth1 netmask 255.255.255.192 
+    - route add default gw 10.3.arm.131 eth0 
+
+    Router 2 (desde PC-SC):
+    - minicom router2
+    - show ip interface brief
+    - enable
+    - configure terminal
+    - ip routing
+    - interface Gygabit-ethernet 0 
+    - no shutdown
+    - ip address 10.3.arm.131 255.255.255.192
+    - exit or #
+    - interface Gygabit-ethernet 1 
+    - no shutdown
+    - ip address 10.3.arm.193 255.255.255.192
+    - exit or #
+    - ip default-network 10.3.arm.129 -> set the default routing ip
+
+6. Conectando el router al laboratorio
+  Configuración interfaces:
+    PC A:
+    - ifconfig eth0 10.3.32 + arm.1
+    - ifconfig eth0 netmask 255.255.255.0 
+    - route add default gw 10.3.32 + arm.1 eth0 
+    - ifconfig 'inteface' down -> para el resto
+    PC B:
+    - ifconfig eth0 netmask 255.255.255.0 
+    - ifconfig eth0 10.3.32 + arm.1
+    - route add default gw 10.3.32 + arm.131 eth0 
+    - ifconfig 'inteface' down -> para el resto

@@ -1,0 +1,69 @@
++x /t &da1
+0x56557000:	00001101000010100000101100001010
++x /x &da1
+0x56557000:	0x0d0a0b0a
++x /1xb &da1
+0x56557000:	0x0a
++focus src
+Focus set to src window.
++focus cmd
+Focus set to cmd window.
++x /1xw &da4
+0x56557003:	0x0a0b0c0d
++x /20xb &da1
+0x56557000:	0x0a	0x0b	0x0a	0x0d	0x0c	0x0b	0x0a	0x68
+0x56557008:	0x6f	0x6c	0x61	0x01	0x00	0x00	0x00	0x02
+0x56557010:	0x00	0x00	0x00	0x03
++x /1xh &da2
+0x56557001:	0x0a0b
++x /5cb &men 1
+No symbol "men" in current context.
++x /5cb &men1
+0x56557007:	104 'h'	111 'o'	108 'l'	97 'a'	1 '\001'
++p /s (char *) &men1
+$1 = 0x56557007 "hola\001"
++x /5xb &da4
+0x56557003:	0x0d	0x0c	0x0b	0x0a	0x68
++x /5xw &da4
+0x56557003:	0x0a0b0c0d	0x616c6f68	0x00000001	0x00000002
+0x56557013:	0x00000003
++p /a &lista
+$2 = 0x5655700b
++p lista
+'lista' has unknown type; cast it to its declared type
++p lista@5
+'lista' has unknown type; cast it to its declared type
++p &_start
+$3 = (<text variable, no debug info> *) 0x56555175 <_start>
++x /i &_start
+=> 0x56555175 <_start>:	mov    $0x1,%eax
++disas /r _start
+Dump of assembler code for function _start:
+=> 0x56555175 <+0>:	b8 01 00 00 00	mov    $0x1,%eax
+   0x5655517a <+5>:	bb 00 00 00 00	mov    $0x0,%ebx
+End of assembler dump.
++x /x &lista + 1
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++x /x &lista+1
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++p /x *(&lista+1)
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++p /x (&lista+1)
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++p /a (void *)&lista+1
+$4 = 0x5655700c
++p /a (int*)&lista+1
+$5 = 0x5655700f
++p (int[5])lista
+$6 = {1, 2, 3, 4, 5}
++p /x *(&lista+1)
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++p /x *(&lista+1)
+Cannot perform pointer math on incomplete type "<data variable, no debug info>", try casting to a known type, or void *.
++p *((int*)&lista+1)
+$7 = 2
++x /dw (int *) &lista+1
+0x5655700f:	2
++p * (int*)&lista@5
+$8 = {1, 2, 3, 4, 5}
++exit

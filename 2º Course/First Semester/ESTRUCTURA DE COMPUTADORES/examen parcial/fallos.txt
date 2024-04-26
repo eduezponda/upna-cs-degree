@@ -1,0 +1,5 @@
+no hago jumps y me mete a varios bucles
+cmp con un registro, no dos contenidos de memoria
+comparar longitud con el dolar
+hacer jumps con mayor y no con superior
+extender signo al final pa pasar el resultado de un registro de menor tamaño a otro de mayor

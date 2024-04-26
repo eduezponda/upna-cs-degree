@@ -1,0 +1,169 @@
++n
++n
++n
++n
++n
++n
++watch $eflags
+Watchpoint 2: $eflags
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF ZF IF ]
+New value = [ IF ]
+main () at saltos.s:42
++layout regs
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ IF ]
+New value = [ CF PF AF SF IF ]
+main () at saltos.s:43
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ CF PF AF SF IF ]
+New value = [ CF PF AF IF OF ]
+main () at saltos.s:53
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ CF PF AF IF OF ]
+New value = [ AF SF IF OF ]
+main () at saltos.s:54
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ AF SF IF OF ]
+New value = [ PF ZF IF ]
+main () at saltos.s:56
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF ZF IF ]
+New value = [ CF AF SF IF ]
+main () at saltos.s:58
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ CF AF SF IF ]
+New value = [ AF SF IF ]
+main () at saltos.s:59
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ AF SF IF ]
+New value = [ PF AF SF IF OF ]
+main () at saltos.s:67
++n
++n
++p /t $eax
+$1 = 1010101111111111
++p /t $ax
+$2 = 1010101111111111
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF AF SF IF OF ]
+New value = [ IF ]
+main () at saltos.s:71
++focus cmd
+Focus set to cmd window.
++p /t $eax
+$3 = 1010101111111111
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ IF ]
+New value = [ PF SF IF ]
+main () at saltos.s:72
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF SF IF ]
+New value = [ PF ZF IF ]
+main () at saltos.s:78
++n
++n
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF ZF IF ]
+New value = [ PF IF ]
+main () at saltos.s:82
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF IF ]
+New value = [ CF AF SF IF ]
+main () at saltos.s:84
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ CF AF SF IF ]
+New value = [ PF ZF IF ]
+main () at saltos.s:88
++n
++n
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF ZF IF ]
+New value = [ PF IF ]
+main () at saltos.s:92
++n
+salto4 () at saltos.s:94
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF IF ]
+New value = [ CF AF SF IF ]
+salto4 () at saltos.s:96
++n
+salto5 () at saltos.s:98
++n
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ CF AF SF IF ]
+New value = [ PF AF IF OF ]
+salto5 () at saltos.s:104
++n
+salto6 () at saltos.s:106
++n
+
+Watchpoint 2: $eflags
+
+Old value = [ PF AF IF OF ]
+New value = [ PF ZF IF ]
+salto6 () at saltos.s:107
++n
+salto7 () at saltos.s:113
++n
++n
++n
+[Inferior 1 (process 6666) exited normally]
++exit

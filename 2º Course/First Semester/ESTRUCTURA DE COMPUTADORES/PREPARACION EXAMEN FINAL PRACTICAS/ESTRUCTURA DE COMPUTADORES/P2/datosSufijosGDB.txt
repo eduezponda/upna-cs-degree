@@ -1,0 +1,53 @@
++b _start
+Punto de interrupción 1 at 0x8049000: file datos_sufijos.s, line 25.
++run
+Starting program: /home/eduardo/Escritorio/Eduardo Ezponda/ESTRUCTURA DE COMPUTADORES/P2/datos_sufijos 
+
+Breakpoint 1, _start () at datos_sufijos.s:25
++n
++n
++n
++n
++n
++n
++layout split
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++n
++layout regs
++x /x &da1
+0x804a000:	0x0d0a0b0a
++x /b &da1
+0x804a000:	0x0a
++x /h &da2
+0x804a001:	0x0a0b
++x /w &da4
+0x804a003:	0x0a0b0c0d
++n
++n
++n
++n
++n
++n
++n
+[Inferior 1 (process 6137) exited normally]
++f
+No hay pila.
++r
+Starting program: /home/eduardo/Escritorio/Eduardo Ezponda/ESTRUCTURA DE COMPUTADORES/P2/datos_sufijos 
+
+Breakpoint 1, _start () at datos_sufijos.s:25
++exit

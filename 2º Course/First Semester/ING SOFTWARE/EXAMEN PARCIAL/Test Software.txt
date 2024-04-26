@@ -1,0 +1,61 @@
+1. Que definio la conferencia de la OTAN en Munich --> las bases de la Ingenieria del Software
+
+2. Definicion de la ingenieria adel software --> enfoque sistematico y cuantificante para las construccion de software
+
+3. La ley de Brooks dice --> el aumento de programadores no afecta en la disminucion de plazos
+
+4. el ciclo de vida de software se compone de las siguientes actividades --> requisitos, analisis, diseño, codificacion, pruebas y despliegue
+
+5. El manifiesto agil --> propone 4 valores para la construccion del software
+
+6. La ley de las dos pizzas --> el numero maximo de personas para formar un equipo autoorganizado es 8
+
+7. Los métodos ágiles del desarrollo --> promueven equipos miltidisciplinares y el solapamiento de actividades
+
+8. El Proceso Unificado --> permite y acepta el solapamiento entre acitvidades
+
+9. La metodologia de Scrum --> se basa en la entrega iterativa y temprana de software con valor funcional
+
+10. El modelo CMMI --> evalua el proceso de contruccion de software
+
+11. El paradigma de programación orientada a objetos --> es una filosofia de desarrollo de programa
+
+12. En lenguajes orientados a objeto llamamos clase a --> Un modelo que define varibales y metodos comunes a todos los objetos
+
+13. En lenguajes orientados a objetos llamamos Herencia a --> el mecanismo que permite a una clase adquirir comportamientos de otra
+
+14. Que se oculta tras la etiqueta (Foto) --> 
+
+15. Los requisitos funcionales --> expresan las necesidades del cliente en su lenguaje
+
+16. Dados los sigueintes requisitos para un editor de texto, cual es funcional? --> el sistema propone correciones si detecta faltas ortograficas
+
+17. Los Casos de Uso describen --> interacciones de los usuarios con el sistema
+
+18. Las historia de usuario --> describen formalmente las necesidades del negocio
+
+19. Los diagramas BPMN --> describen el proceso de negocio en flujo temporal horizontal
+
+20. El principio Open/Close hace referencia a --> el codigo debe estar abierto a la extension y cerrado a la modificacion
+
+21. El patrón Modelo-Vista-Presentador --> prescribe la separacion de la vista del modelo
+
+22. UML es --> un conjunto de diagramas para representar software
+
+23. Esto es..
+
+24. Relacion (foto movil)--> composicion débil
+
+25. El diseño guiado por pruebas --> exige la codificacion de pruebas, hace emerger el diseño, no requiere diagramas UML
+
+26. Cual de la siguientes no es una regla de Nieben --> Limita las opciones del usuario para que el uso del programa sea uniforme
+
+28. La integracion continua se basa --> en la automatizacion del proceso de compilacion
+
+29. Verificar el software consiste en --> comprobar que se ha desarrollado sin errores
+
+30. Validar el software consiste en --> comprobar que cumple las necesidades del cliente
+
+31. Devops --> pretende unificar el desarrollo con la operación del software
+
+32. El entrega continua (continous delivery) --> propone automatizar los despliegues en Producción, permite reducir el "time-to-market", extiende la "integración conitnua" tambien en producción

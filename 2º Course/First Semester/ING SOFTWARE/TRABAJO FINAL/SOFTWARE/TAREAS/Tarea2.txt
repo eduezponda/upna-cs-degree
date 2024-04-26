@@ -1,0 +1,7 @@
+Guillermo Azcona Recari (NIA. 141107)
+
+Tarea tema 2. Administración segura del medicamento.
+
+Como desarrollador de software quiero retomar el programa de administración segura del medicamento para incrementar la seguridad en su
+suministro a pacientes oncológicos del Complejo Hospitalario de Navarra y evitar así posibles complicaciones clínicas derivadas
+de un error.

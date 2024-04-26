@@ -1,0 +1,9 @@
+reutilizar código
+ver foto en YO para la modificación -> resuelta muy correcta (lo único lo del login)
+a veces tienes que asumir una precondición para empezar el problema, y así hacer el diagrama más sencilla
+no quiere relaciones binarias -> relaciones n-arias -> 3 o así -> no estar poniendo cada cosa que devuelves
+En el tercer problema, asumes que ya se ha seleccionado la vivienda, asi que no hay q poner la referencia a selección
+
+problemas del mio que voy a cambiar:
+-no poner ref a selección
+-debería de hacerlo más sencillo y hacer relaciones narias -> seleccionar vivienda y no seleccionar tipo, régimen, municipio...

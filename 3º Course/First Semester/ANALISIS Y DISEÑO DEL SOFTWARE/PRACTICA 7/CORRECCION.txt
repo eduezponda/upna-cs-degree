@@ -1,0 +1,30 @@
+INTERFACES:
+Métodos públicos y no atributos
+Asociación de realización (línea discontinua)
+Implementar métodos desde clases en las que llamas
+
+Crear clase Promoción. Puedes crear dos clases que sean lista temporal y final de multiplicidad 1 con promocion. Lista temporal con metodo actualizar
+En una promoción siempre tiene que haber alguna vivienda
+Una vivienda solo puede estar en una promoción
+Poner siempre multiplicidad aunque sea 1
+
+Promoción podria ser composicion fuerte con vivienda (rombo negro)
+
+CORRECCIÓN:
+Clase alegación mal o se la tiene que tragar (no le convence)
+composición fuerte
+Dar nombre a la interfaz
+Poner todas las multiplicidades
+
+No poner selecciona, asigna... NO modelamos relaciones
+
+EXPLICACION ANTERIOR PRACTICA (a por que ponemos el metodo registrarVivienda en inscripcion y no en vivienda)
+Cuando pepito esta haciendo la inscripcion tienes que tener la funcionalidad de registrar vivienda (usuario tiene que tener la posibilidad de registrar vivienda)
+
+No poner añadir ni quitar vivienda como metodos en promocion (seria mas en vivienda)
+
+El enunciado te puede decir lo que quieras, pero no hay que ir hasta un nivel muy exacto porque eso seria solo necesario para implementar
+código. También, no es necesario poner todo lo del enunciado porque estas implementando el diagrama de adjudicar viviendas (todo alrededor de eso)
+Por ejemplo, no es necesario poner atributo promocion en vivienda ni atributo vivienda[] en promocion. Con la multiplicidad vale
+
+Se puede poner solo una clase lista de adjudicacion con un booleano para saber si es temporal o definitivo

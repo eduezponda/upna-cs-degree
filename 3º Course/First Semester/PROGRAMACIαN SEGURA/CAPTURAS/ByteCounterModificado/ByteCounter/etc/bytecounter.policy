@@ -1,0 +1,8 @@
+grant codeBase "file:${user.dir}/dist/main.jar" {
+  // Vacía; el método main() no necesita permisos.
+};
+
+grant codeBase "file:${user.dir}/dist/counter.jar" signedBy "*************" {
+  permission java.util.PropertyPermission "user.dir", "read";
+  permission java.io.FilePermission "${user.dir}${/}data${/}*", "read";
+};

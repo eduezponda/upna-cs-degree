@@ -1,0 +1,62 @@
+Ejercicio: La Prescripción
+
+REQUISITOS y CRITERIOS DE ACEPTACIÓN:
+
+1. Como enfermera del SNS-O quiero acceder al paciente a partir del nombre y apellidos en vez de únicamente a través de su NHC para agilizar el proceso de la prescripción de medicamentos.
+Dado el número de DNI debe poder automáticamente devolverme el nombre y apellidos del paciente.
+
+2.Como médico del SNS-O quiero poder identificar las alergias del paciente antes de la administración de medicamentos para garantizar su salud y posibles consecuencias negativas.
+Dado el historial médico del paciente debe advertir de las alergias con mayor gravedad.
+
+3.Como secretaria del SNS-O quiero conocer si el paciente está incluido en la estrategia de crónicos para optar por el uso de determinados medicamentos.
+Dado el historial médico del paciente y su enfermedad crónica debe determinar que clase de enfermedad crónica padece y garantizar su seguridad en el uso del medicamento correspondiente.
+
+4.Como enfermero del SNS-O quiero consultar el historial completo de prescripciones para conocer si está haciendo uso de otro tipo de medicamentos y para garantizar su seguridad ante la compatibilidad del uso de fármacos.
+Dado la prescripción de todos los fármacos que está haciendo uso el paciente, debe advertir y eliminar todos los medicamentos que se puedan añadir y que sean incompatibles su compatibilación.
+Dado un paciente con NHC igual 123456 cuando seleccionas el paciente a través del NHC, entonces puedes consultar su historial farmacoterapeútico
+
+ANÁLISIS FUNCIONAL:
+
+Actores:  Pacientes, médicos, enfermeros, secretarios, ingenieros del SNS-O.
+
+2B:
+
+Identificador: CU-01
+Nombre: Crear nueva Prescripción
+Meta: Modificar el sistema en el uso de las prescripciones
+Actores: Médica
+Precondición: El médico, tras buscar al paciente por sus datos personales, selecciona el fármaco
+Flujo básico:	
+	Paso 1: El médico introduce los datos personales para la búsqueda
+	Paso 2: El médico revisa que el paciente sea alérgico o crónico
+	Paso 3: El médico realiza la prescripción del medicamento acorde a su malestar
+Flujo alternativo:
+	Paso: En el caso de no identificación, se procederá a la cancelación de la prescripción
+Postcondición: El historial médico del paciente se actualiza en el sistema
+
+3:
+
+HU-01 Seleccionar Paciente:  Inserción de los datos personales
+			     Búsqueda del paciente
+			     Seleccionar paciente
+
+HU-02 Aviso reacción adversa: Seleccionar paciente
+			      Aviso de las alergias que padece y de su gravedad
+			      Eliminación de los fármacos correspondientes
+			      Realización de la prescripción del medicamento
+
+HU-03 Aviso paciente crónico: Seleccionar paciente
+			      Aviso de la pertenencia al grupo de pacientes crónicos
+			      Eliminación de los fármacos correspondientes
+			      Realización de la prescripción del medicamento
+
+HU-04 Consultar historial: Inserción de los datos personales
+			   Búsqueda del paciente
+			   Seleccionar paciente
+			   Seleccionar historial médico
+			   
+			   
+
+
+
+

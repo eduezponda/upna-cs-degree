@@ -1,0 +1,34 @@
++layout regs
++n
+main () at sumar.s:6
++info frame
+Stack level 0, frame at 0xffffd1dc:
+ eip = 0x5655618f in main (sumar.s:6); saved eip = 0x5
+ source language asm.
+ Arglist at 0xffffd1d4, args: 
+ Locals at 0xffffd1d4, Previous frame's sp is 0xffffd1dc
+ Saved registers:
+  eip at 0xffffd1d8
++n
++n
++n
+[Inferior 1 (process 4169) exited normally]
++y
+orden indefinida: «y». Intente con «help»
++run
+Starting program: /home/eduardo/Escritorio/sumar 
+[Depuración de hilo usando libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at sumar.s:5
++n
+main () at sumar.s:6
++step
+restar () at sumar.s:13
++bt
+#0  restar () at sumar.s:13
+#1  0x56556194 in main () at sumar.s:6
++finish
+Correr hasta la salida desde #0  restar () at sumar.s:13
+main () at sumar.s:8
++exit

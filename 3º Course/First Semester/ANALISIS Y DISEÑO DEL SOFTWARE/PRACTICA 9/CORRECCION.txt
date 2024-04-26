@@ -1,0 +1,20 @@
+tienes que tener cuidado al hacer un bucle y poner un decision node para no unirlo directamente a la accion, porque si no tuviera errores,
+necesitarias para que inicie verificar datos que se hayan completado todos los nodos o flechas entrantes. No hace falta poner lineas verticales
+negras, unes directamente al final y ya. 
+Correccion en YO
+Se podria ampliar la correccion con lo de alegar, pero no esta mal. La alegación es optativa
+No pone particion horizontal.
+Modela la documentacion recibida como evento porque no es algo inmediato. No sabes cuadno vas a recibir la documentación
+Aunque anule la inscripcion el ciudadano, modela la anulacion como evento, y creo que tiene que estar dentro del cuadrado.
+El cuadradito de cerrar ficha indica que hay datos
+
+Donde ponemos un diamante negro en el diagrama de clases, lo maximo que podemos poner es 1. No asteriscos. 0..1
+Si modelamos con 0..1, ese producto que esta en el carrito esta reservado hasta que desaparezca el carrito. El producto esta ahi siempre
+
+Para hacer los arcos al sobrepasar dos lineas, hay abajo del todo haciendo click derecho, una opcion que dentro de ella pone Art creo
+
+¿Preguntar, clase1 esta compuesta por clase2? Si, eso, hace composicion
+En la agenda cultural de la clase de repaso, cree que aunque este compuesta la campaña de eventos, si desaparece la campaña igual esta el evento
+, aunque la composicion fuerte se podria hacer tmb
+
+El identifica el producto como un producto unico

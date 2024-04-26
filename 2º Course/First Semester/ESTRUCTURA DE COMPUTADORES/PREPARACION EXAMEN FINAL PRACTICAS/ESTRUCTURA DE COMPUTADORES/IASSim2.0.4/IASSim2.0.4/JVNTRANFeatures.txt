@@ -1,0 +1,46 @@
+/*
+    This program does nothing useful except demonstrate 
+    the features of JVNTRAN.
+    This is a block comment.
+*/
+
+// line comment
+
+INTEGER W
+INTEGER Z = 305 * 5 % 4
+INTEGER DATA_4(5)
+INTEGER DATA(3 + 6*9 / (0XFE + 0B111))
+
+BOOLEAN FOUND = FALSE
+
+CONSTANT INTEGER Q = 8
+CONSTANT BOOLEAN A = TRUE
+
+FOUND = (W == Z) && (DATA_4(1) > Z)
+DATA(2) = DATA(2) + 3 << 2
+
+DO WHILE ((W < 5) || !(8 > Z))
+    Z = Z + 1
+    W = W + 2
+    IF (W > 5)
+        BREAK
+    END IF
+END DO
+
+IF (W != 5) 
+    Z = W + Q 
+END IF
+ELSE 
+    Z = W - Q
+END ELSE
+
+HALT
+
+/*  
+    NOT SUPPORTED:  EVERYTHING ELSE, INCLUDING
+	SUBROUTINES
+	I/O
+	EXPONENTIATION
+	VECTOR OPERATION
+	FLOATING POINT NUMBERS
+*/

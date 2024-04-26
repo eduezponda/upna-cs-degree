@@ -1,0 +1,28 @@
+#ifndef EEI_..._H
+#define EEI_..._H
+
+#include <stdio.h>
+
+importaciones
+
+Declaraciones de tipos que se necesiten o de modulos para importar.
+
+declaracion de funciones/acciones que se exportan
+
+#endif
+
+-------------------------------------------------------------------------
+#include ".h"
+
+
+importaciones de modulos necesarios
+
+desarrollo funciones/acciones que se exportan
+
+poner acciones/funciones nuevas o tipos si se necesitan para las exportaciones, 
+teniendo en cuenta que hay que colocarlas anteriormente de la accion,
+pero no hay que ponerlas en el .h
+
+en la practica 4, yo utilizo para cuenta.c el modulo palabras2.h
+
+aunq las acciones del pdf estan en el modulo palabras.h

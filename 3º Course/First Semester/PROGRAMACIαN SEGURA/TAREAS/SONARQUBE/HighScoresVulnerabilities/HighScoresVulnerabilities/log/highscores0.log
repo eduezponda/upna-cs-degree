@@ -1,0 +1,15 @@
+mié nov 15 19:49:39 CET 2023 highscores.EncryptPassword doBytesEncryptedData 
+ GRAVE: null 
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, El sistema no puede encontrar el archivo especificado
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at highscores.EncryptPassword.doBytesEncryptedData(EncryptPassword.java:61)
+	at highscores.HighScoresDBSubsystem.<init>(HighScoresDBSubsystem.java:59)
+	at main.HighScores.main(HighScores.java:38)
+Caused by: java.io.IOException: CreateProcess error=2, El sistema no puede encontrar el archivo especificado
+	at java.base/java.lang.ProcessImpl.create(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:499)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:158)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 4 more
+ 

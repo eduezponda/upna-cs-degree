@@ -1,0 +1,19 @@
+
+
+
+PROCEDIMIENTO DE EDICION-COMPILACION-EJECUCION
+
+1º Editar el fichero fuente C: Por ejempo bmp_pixeles.c
+	$gedit bmp_pixeles.c
+2º Copiar el fichero anterior con el nombre bmp_image.c
+	$cp bmp_pixeles.c bmp_imagen.c
+3º Eliminar resultados previos de la compilación y ejecución
+	$make clean
+4º Compilar
+	$make
+5º Script: Compilación -> ejecución -> visualización
+	El fichero script *.sh debe tener permiso de ejecutable, si no lo es -> $chmod a+x comp_ejec_vis.sh
+	$./comp_ejec_vis.sh
+
+
+

@@ -1,0 +1,32 @@
+tipo
+	ListaDeElem=ref celda;
+	celda=tupla
+		e:Elem;
+		sig:ref celda;
+	ftupla
+ftipo
+accion intercambio (e/s l:ListaDeElem, ent q:Elem)
+	var
+		aux: ref celda;
+	fvar
+	aux:=q ref.sig;
+	q ref.sig:=q ref.sig ref.sig;
+	aux ref.sig:= q ref.sig ref.sig;
+	q ref.sig ref.sig:=aux;
+faccion
+tipo
+	ListaDeElem=ref celda;
+	celda=tupla
+		e:Elem;
+		ant:ref celda;
+		sig:ref celda;
+	ftupla
+ftipo
+accion intercambio(e/s l:ListaDeElem,ent q:Elem)
+	q ref.sig:=q ref.sig ref.sig;
+	q ref.sig ref.ant ref.sig:=q ref.sig ref.sig;
+	q ref.sig ref.sig:=q ref.sig ref.ant;               //Hasta aqui primer puntero
+	q ref.sig ref.ant:=q ref.sig ref.ant ref.ant;
+	q ref.sig ref.sig ref.ant:=q ref.sig;
+	q ref.sig ref.sig ref.sig ref.ant:=q ref.sig ref.sig; // Hasta aqui segundo puntero
+faccion

@@ -1,0 +1,12 @@
+Guillermo Azcona Recari (NIA 141107)
+Tarea 4. Diseño Técnico.
+
+Los sustantivos principales del sistema propuesto son, los motores, carrocerías, gestores, clientes e ingenieros,
+tanto de motores como de carrocerías.
+
+Las relaciones que se establecen entre dichos sustantivos serán: los tipos de usuario en un mismo grupo, donde encontraremos los gestores,
+los clientes y los ingenieros y, por otro lado, los motores y carrocerías estarán relacionados entre sí.
+
+Por último, los atributos fundamentales serán dichos sustantivos, agrupados en las dos clases ya nombradas y los métodos serán los diferentes
+grados de permisos que tendrán los clientes (elegir día de prueba, elegir motor o carrocería...) y gestores (diferentes grado de acceso a los datos)
+o los tipos de motor y carrocería que podrá elegir. 

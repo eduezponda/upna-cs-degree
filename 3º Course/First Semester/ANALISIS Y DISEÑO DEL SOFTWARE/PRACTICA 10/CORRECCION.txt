@@ -1,0 +1,13 @@
+En las interfaces, si unes ya con las flechas a las clases, si haces botón derecho y le das a realize, los métodos de la interfaz se 
+implementan en las clases conectadas. Composición, agregación y asociación con multiplicidades. Dependencia y herencia no.
+
+!Composición fuerte máximo 1 de multiplicidad!
+
+¡Los metodos no van en quien los realiza, sino donde se almacena la información que necesitas para el método!
+
+Los patrones de diseño van a caer en el examen, y es probable que se añada un singleton a un diagrama de clases por ejemplo
+No hay clase usuario. Su información está en invitación y no se necesita tener su información aparte. Modelas la información
+
+Los eventos externos no los controlamos así que no incluimos métodos dentro.
+
+El atributo campaña en evento es opcional porque se da implícito en la relación. Foto en YO. 

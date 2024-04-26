@@ -1,0 +1,8 @@
+grant {
+    permission java.util.PropertyPermission "user.dir", "read";
+    permission java.io.FilePermission "C:\Users\Eduardo\Downloads\sesion.20230928\sesion.20230928\FilePermissions\data\Ligeia.txt", "read";
+    #permission java.io.FilePermission "${user.dir}\data\Ligeia.txt", "read";
+    #permission java.io.FilePermission "${user.dir}${\}data${\}Ligeia.txt", "read";
+    #permission java.io.FilePermission "${user.dir}${\}data${\}*", "read";
+    permission java.io.FilePermission "${user.dir}${\}data${\}*", "write";
+};

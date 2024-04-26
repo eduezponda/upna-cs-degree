@@ -1,0 +1,48 @@
+_pgm0:
+	S(x)->Ac+	_idN
+	S(x)->Ah-	_lit0
+	S(x)->Ah-	_lit1
+	Cc->S(x)	_pgm1
+	S(x)->Ac+	_lit0
+	Cu->S(x)	_pgm2
+_pgm1:
+	S(x)->Ac+	_lit1
+	S(x)->Ah+	_lit0	;NOOP
+_pgm2:
+	At->S(x)	_tmp1
+	S(x)->Ac+	_tmp1
+	S(x)->Ah-	_lit1
+	Cc->S(x)	_pgm3
+	Cu->S(x)	_whl1
+	S(x)->Ah+	_lit0	;NOOP
+_pgm3:
+	S(x)->Ac+	_idSUM
+	S(x)->Ah+	_idN
+	At->S(x)	_tmp4
+	S(x)->Ac+	_tmp4
+	At->S(x)	_idSUM
+	S(x)->Ac+	_idN
+	S(x)->Ah-	_lit1
+	At->S(x)	_tmp5
+	S(x)->Ac+	_tmp5
+	At->S(x)	_idN
+	Cu->S(x)	_pgm0
+	S(x)->Ah+	_lit0	;NOOP
+_whl1:
+	halt
+	S(x)->Ah+	_lit0	;NOOP
+; DATA
+_idN:		.data 5
+_idSUM:		.data 0
+_tmp0:		.data 0
+_tmp1:		.data 0
+_tmp2:		.data 0
+_tmp3:		.data 0
+_tmp4:		.data 0
+_tmp5:		.data 0
+_tmp6:		.data 0
+; CONSTANTS
+_lit5:	.data 5
+_lit0:	.data 0
+_lit1:	.data 1
+_lit_1:	.data -1

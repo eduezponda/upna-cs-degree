@@ -1,0 +1,2 @@
+El throughput es de 54.8/min. Por lo tanto, se podrán realizar
+54.8 consultas por minuto o 0.91 consultas por segundo.

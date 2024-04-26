@@ -1,0 +1,4 @@
+http://localhost:3000/d/beca9f7b-e92f-4ef4-85b8-d64440fd14c2/comarcas?orgId=1&editPanel=2&from=1072915200000&to=1104105600000
+
+En el enlace proporcionado se encuentran todas las consultas en modo visible. Para visualizar los informes, bastaría con
+ir visualizando de una en una cada una de las sentencias sql, quitando la visualización de las sentencias restantes.

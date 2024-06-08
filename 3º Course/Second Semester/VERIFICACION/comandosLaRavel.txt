@@ -1,0 +1,16 @@
+INSTALAR SAIL para no tener que poner todo el rato /vendor/bin/sail + COMANDO
+
+
+sudo service mysql stop
+sudo service apache2 stop
+./vendor/bin/sail up -d
+composer update or install
+./vendor/bin/sail php artisan migrate:rollback
+./vendor/bin/sail php artisan migrate
+cp .env.example .env
+./vendor/bin/grumphp run --tasks phpcs
+./vendor/bin/sail php artisan test
+php artisan test tests/Unit
+php artisan test tests/Feature
+
+NOTA: ABRIR DOCKER DESKTOP

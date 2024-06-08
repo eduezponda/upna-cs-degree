@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Eliminación de persona</title>
+</head>
+<body>
+	<h1>Eliminación de persona</h1>
+	<form action="index.php" method="post">
+		Nombre: ##nombre##<br>
+		Primer apellido: ##apellido1##<br>
+		Segundo apellido: ##apellido2##<br>
+		<input type="hidden" name="accion" value="bym">
+		<input type="hidden" name="id" value="5">
+		<input type="hidden" name="idpersona" value="##idpersona##">
+		<input type="submit" value="Enviar">
+	</form>
+	<a href="index.php?accion=menu&id=1">Volver al menú</a>
+</body>
+</html>

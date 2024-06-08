@@ -1,0 +1,30 @@
+Buscar: <input type="text" name="buscar" id="buscar">&nbsp;&nbsp;&nbsp;&nbsp;Lineas por página: 
+<select name="numerolineas" id="numerolineas" onchange="cargarpoblaciones(##idprovincia##);">
+	<option ##selected10##>10</option>
+	<option ##selected20##>20</option>
+	<option ##selected30##>30</option>
+</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Página <input type="button" value="<" name="anterior" id="anterior"> <input type="text" name="pagina" id="pagina" value="1"> de ##paginafinal## <input type="button" value=">" name="siguiente" id="siguiente">
+	<script>
+		$(document).ready(function(){
+			$("#buscar").on("keyup", function () {
+				cargarpoblaciones(##idprovincia##);
+			});
+		})
+	</script>
+
+<table border=1>
+	<tr>
+		<th>Poblacion</th>
+		<th>Poblacion</th>
+		<th>Poblacion</th>
+		<th>Poblacion</th>
+	</tr>
+	##fila##
+	<tr bgcolor="##color##">
+		<td>##poblacion1##</td>
+		<td>##poblacion2##</td>
+		<td>##poblacion3##</td>
+		<td>##poblacion4##</td>
+	</tr>
+	##fila##
+</table>

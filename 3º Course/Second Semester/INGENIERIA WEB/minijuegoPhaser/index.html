@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MINIJUEGO</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="comprobarDatosUsuario.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form id="formImagenes">
+        <label for="usuario">Usuario:</label>
+        <input id="usuario" type="text">
+        <legend>Escoge el personaje:</legend>
+        <label>
+            <img src="pavos/pavoIzda1.webp">
+            <input type="radio" name="personaje" value="pavo1">Gualajote
+        </label>
+        <label>
+            <input type="radio" name="personaje" value="pavo2">Guanajo
+            <img src="pavos/pavoIzda2.webp">
+        </label>
+        <label>
+            <input type="radio" name="personaje" value="pavo3">Garullo
+            <img src="pavos/pavoIzda3.webp">
+        </label>
+        <br>
+        <button type="button" onclick="comprobarDatos()">EMPEZAR A JUGAR</button>
+    </form>
+    <div id="imageContainer">
+        <div class="fondo">
+            <img src="./img/fondo.jpg">
+            <div id="tecla"></div>
+            <div class="cont-mapa" id="mapa">
+                <div class="personaje" id="personaje"><img  src="./img/personaje.png" alt=""></div>
+            </div>            
+        </div>
+    </div>
+
+</body>
+</html>

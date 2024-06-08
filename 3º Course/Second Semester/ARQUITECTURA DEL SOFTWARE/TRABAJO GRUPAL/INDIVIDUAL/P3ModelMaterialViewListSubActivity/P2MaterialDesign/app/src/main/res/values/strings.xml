@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">P3ModelMaterialViewListSubActivity</string>
+
+    <string name="back4app_server_url">https://parseapi.back4app.com/</string>
+    <string name="back4app_app_id">2t9akwWd4ENGP3XFlieTyePLqVUs9fqz4M4ygTga</string>
+    <string name="back4app_client_key">Yzc07dX1x77Tz0hi4EfV5RveCGqUyUxXOxFSSj57</string>
+
+    <string name="idText">Id:</string>
+    <string name="velocityText">Velocity:</string>
+    <string name="slopeText">Slope:</string>
+    <string name="trainingProgramText">Training program:</string>
+    <string name="visualizationText">Visualization:</string>
+    <string name="connectionBluetoothText">Connect Bluetooth:</string>
+    <string name="musicText">Music:</string>
+    <string name="timeText">Time:</string>
+    <string name="heartRateText">Heart Rate:</string>
+    <string name="caloriesText">Calories per hour:</string>
+
+    <string name="edit_simulate">Type something here</string>
+    <string name="chooseOptionTrainingProgram">Choose an option</string>
+
+    <string name="velocityMeasureText">km/h</string>
+    <string name="slopeMeasureText">%</string>
+    <string name="caloriesMeasureText">cal</string>
+    <string name="heartRateMeasureText">lpm</string>
+
+    <string name="photoButtonText">TAKE PHOTO</string>
+    <string name="cancelButtonText">CANCEL</string>
+    <string name="saveButtonText">SAVE</string>
+    <string name="simulateButtonText">SIMULATE</string>
+    <string name="historyButtonText">HISTORY</string>
+    <string name="stateButtonText">STATE</string>
+
+    <string name="photoText">Last photo:</string>
+
+
+</resources>

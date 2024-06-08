@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Listado de poblaciones</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		var comunidad = 0;
+		var provincia = 0;
+
+
+
+		function cargarprovincias(idcomunidad) {
+			$.ajax({
+				url:"index.php?idcomunidad=" + idcomunidad + "&accion=listadoprovincias&id=1",
+				success: function (resultado) {
+					$("#listadoprovincias" + comunidad).html("");
+					$("#listadoprovincias" + idcomunidad).html(resultado);
+					comunidad = idcomunidad;
+				},
+				error: function () {
+					alert("Se ha producido un error");
+				}
+			})
+		}
+
+		function cargarpoblaciones(idprovincia) {
+			var buscar = $("#buscar").val();
+			if(typeof buscar === 'undefined'){
+				buscar = "";
+			}
+			var numerolineas = $("#numerolineas").val();
+			if(typeof numerolineas === 'undefined'){
+				numerolineas = 10;
+			}
+
+			$.ajax({
+				url:"index.php?idprovincia=" + idprovincia + "&accion=listadopoblaciones&id=1&buscar=" + buscar + "&numerolineas=" + numerolineas,
+				success: function (resultado) {
+					$("#listadopoblaciones" + provincia).html("");
+					$("#listadopoblaciones" + idprovincia).html(resultado);
+					provincia = idprovincia;
+					//Conservamos el valor escrito en buscar
+					$("#buscar").val(buscar);
+					$("#buscar").focus();
+				},
+				error: function () {
+					alert("Se ha producido un error");
+				}
+			})
+		}
+
+	</script>
+</head>
+<body>
+	<h1 id="listado">Listado de poblaciones</h1>
+	##fila##
+	<div onclick="cargarprovincias(##idcomunidad##);">##comunidad##</div>
+	<div id="listadoprovincias##idcomunidad##"></div>
+	##fila##
+</body>
+</html>

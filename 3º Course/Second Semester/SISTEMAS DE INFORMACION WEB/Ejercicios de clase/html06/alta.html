@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Alta de persona</title>
+</head>
+<body>
+	<h1>Alta de persona</h1>
+	<form action="index.php" method="post">
+		Nombre: <input type="text" name="nombre"><br>
+		Primer apellido: <input type="text" name="apellido1"><br>
+		Segundo apellido: <input type="text" name="apellido2"><br>
+		Provincia: 
+			<select name="idprovincia" id="idprovincia">
+				<option value="0">Seleccione una provincia</option>
+				##fila##
+				<option value="##idprovincia##">##provincia##</option>
+				##fila##
+			</select><br>
+		<input type="hidden" name="accion" value="alta">
+		<input type="hidden" name="id" value="2">
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</html>

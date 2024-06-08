@@ -1,0 +1,6 @@
+Cuando tratamos la accesibilidad web hablamos de 4 principios fundamentales:
+P.O.U.R
+1. Percibible (disponible a los sentidos)
+2. Operable (elementos de navegacion deben estar disponibles)
+3. Entendible (Faciles de interpretar)
+4. Robusto (Como para ser interpretado por multiples aplicaciones de usuario y ayyudas técnicas)

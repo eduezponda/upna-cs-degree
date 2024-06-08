@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JQuery</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		function prueba() {
+			console.log("Prueba");
+			$("#miparrafo").html("Esta es una prueba de texto");
+			console.log("Prueba2");
+		}
+
+		function peticion(num) {
+			$.ajax({
+				url: "prueba01.php?numero=" + num,
+				success: function (result) {
+					$("#miparrafo").html(result);
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="miparrafo">Hola mundo!!!</div>
+	<input type="button" value="Pinchame" onclick="prueba();"><br><br>
+	<input type="button" value="Pinchame 2" onclick="peticion(1);"><br><br>	
+	<input type="button" value="Pinchame 3" onclick="peticion(2);"><br><br>	
+</body>
+</html>

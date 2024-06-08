@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Elección de municipio</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script>
+		function cargarcomunidades() {
+			$.ajax({
+				url:"cargarcomunidades.php",
+				success: function (resultado) {
+					$("#comunidades").html(resultado);
+				}
+			})
+		}
+
+		function cargarprovincias() {
+			var id = $("#idcomunidad").val();
+			if (id == 0) {
+				alert ("Seleccione una comunidad");
+				$("#provincias").html("");
+				$("#poblaciones").html("");				
+			}
+			else
+				$.ajax({
+					url:"cargarprovincias.php?idcomunidad=" + id,
+					success: function (resultado) {
+						$("#provincias").html(resultado);
+						$("#poblaciones").html("");
+					}
+				});
+		}
+		function cargarpoblaciones() {
+			var id = $("#idprovincia").val();
+			var texto = $("#textobusqueda").val();
+			if (id == 0) {
+				alert("Debe seleccionar una provincia");
+				$("#poblaciones").html("");
+			}
+			else
+				$.ajax({
+					url:"cargarpoblaciones.php?idprovincia=" + id + "&texto=" + texto,
+					success: function (resultado) {
+						$("#poblaciones").html(resultado);
+					}
+				});
+		}		
+
+		function prueba() {
+			alert("Hola");
+		}
+	</script>
+</head>
+<body onload="cargarcomunidades();">
+	<div id="comunidades"></div>
+	<div id="provincias"></div>
+	<div id="poblaciones"></div>
+</body>
+</html>

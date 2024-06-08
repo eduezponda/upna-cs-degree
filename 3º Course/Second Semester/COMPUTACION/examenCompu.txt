@@ -1,0 +1,64 @@
+Duración entre 2 y 3 horas
+Errores de calculo no penalizan, siempre que se explique bien el procedimiento
+Justificar salva la puntuacion muchas veces
+Preguntad cualquier duda aunque parezca una chorrada.
+5 minutos al inicio para entregar en blanco.
+Tema 1:
+- Error relativo
+- Error absoluto
+- Toleracia
+- Diferencia entre exactitud y precision
+Tema 2:Todo lo que es teoria como tal si (Convergencias, criterios parada, etc)
+- En todos los metodos
+-	Teoremas como tales no
+-	Teorema de propagacion del error
+-	Enunciados de los teoremas, no se pide demostración
+-	Biseccion como funciona y la estimacion del error
+-	Lo anterior para todos los teoremas
+-	Convergecia de los teoremas
+-	Ejemplos resueltos, pero no merece la pena¿?
+-	Entender como funciona el metodo y como converger, NO DEMOSTRACIONES -> ejercicios de la hoja?
+- Comparaciones entre metodo de la secante, regula falsi y newton (Observaciones teoricas)
+- Que es un punto fijo, encontrar un 0 vs encontrar un punto fijo  (¿Relacion? o problema de esto)
+- Teoremas de punto fijo, cuando existe al menos un punto fijo y cuando existe un punto fijo
+- Saber aplicar teoremas de punto fijo en un problema
+- Tasa de error (corolario), demostración no. resultado si (si error menos, suele ser resultado bueno o algo asi)
+- Definicion de orden de convergencia
+- Como defino y como calculo el orden de convergencia
+- Ecuaciones polinomicas
+-	Horner, saber hacerlo
+-	Saber que es la deflacion
+-	Acotaciones, conocer las que aparezcan (Laguerre-Thibault y Newton) y en que condiciones puedo aplicarlas
+-	Metodo de ¿Aditivo?, no existe en este tema
+-	STURM VA A CAER: De manera teorica, ejercicio ...
+-		Conocer el metodo bien ¿suelto?
+-		Funciona si el polinomio no tiene raices multiples, que hacer si el polinomio tiene raices multiples
+-		Puede que en el examen no te diga si las raices son simples o multiples, por lo que tendriamos que comprobarlo
+-		Probablemente se diga de que tipo son las raices (simples o multiples)
+-		Tiene muchos calculos, division de polinomios, no perdais el tiempo en las cuentas, mientras tenga sentido no se penaliza, pero se penaliza no explicar
+-		Sturm explicar, pasos y explicar el resultado.
+-	
+Tema 3
+- Funcion de fitness: Si esta mal, es 0, aunque si jusificas...
+- Cromosomas blablabla, comentar todo
+- Noseque de que el mejor punto esta en el 0
+
+Tema 4 (min 21)
+- Aproximación marcoviana
+- Como consigo representar todas las poblaciones
+- Usando aproximacion marcoviana, como consigo llegar a estos 4 ? (no se entiende) numero finito de blablabla
+Tema 5: (min 25) Control de parametros (Tema de mas entender). DEMOSTRACIONES NO
+- Donde puedo usar gravitacion
+- Gravitacion vs algoritmos geneticos
+- Diferencias entre agoritmos, vs enjambres por ejemplo (no hay ejercicio de pso porque es directo)
+- Donde puede aplicarlo, ventajas e inconvenientes, equilibrio entre intensidad y profundidad del optimizador
+- VENTAJAS E INCONVENIENTES, DIFERENCIAS Y SIMILITUDES entre gravitacional y pso. Ej,: Gravutacional guarda iteraciones pasadas, pso no.
+Temas 6: (min 28) Sistemas lineales: GAUSS
+- No pregunta que es el rango.
+- puede pedir el calculo del determinante de una matriz, se DEBE hacer por GAUSS
+- Metodo de gauss: Determinante
+- Metodo de gauss-jordan: Inversa
+
+Tema 7:
+- Definición P
+- Definición NP

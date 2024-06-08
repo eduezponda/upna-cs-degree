@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prueba de Javascript</title>
+	<script language="Javascript">
+		function prueba(mensaje) {
+			alert(mensaje);	
+		}
+	</script>
+</head>
+<body onload="prueba('Se ha cargado');">
+	Esta es una prueba de frase que contiene: <span onclick="prueba('He pinchado el texto');" onmouseover="prueba('Estoy encima de Hola');">Hola mundo!!!</span> y este es el resto de la frase<br><br><br><br>
+	<img src="paisaje01.jpg" width="150" height="150" onmouseover="prueba('Encima de la imagen');" onmouseout="prueba('Salgo de la imagen');">
+	<input type="button" value="Pinchame" onclick="prueba('Has pinchado el botón');">
+</body>
+</html>
+
+
+
+
+
+

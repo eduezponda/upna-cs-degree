@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Imagenes</title>
+	<script language="Javascript">
+		var contador = 1;
+
+		function cambiar() {
+			console.log("He pasado por aquí");
+			var aux = document.getElementById("imagen");
+			contador++;
+			if (contador >= 6) {
+				contador = 1;
+			}
+			aux.src = "paisaje0" + contador + ".jpg";
+		}
+
+		function cambiar2(c) {
+			contador = c;
+			cambiar();
+		}
+
+		var idtemporizador;
+
+		function comenzar() {
+			idtemporizador = setInterval(cambiar, 500);
+		}
+
+		function finalizar() {
+			clearInterval(idtemporizador);
+		}
+		
+	</script>
+</head>
+<body>
+	<img src="paisaje01.jpg" width="300" height="300" id="imagen"><br><br>
+	<img src="paisaje01.jpg" width="50" height="50" onclick="cambiar2(0)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="paisaje02.jpg" width="50" height="50" onclick="cambiar2(1)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="paisaje03.jpg" width="50" height="50" onclick="cambiar2(2)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="paisaje04.jpg" width="50" height="50" onclick="cambiar2(3)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<img src="paisaje05.jpg" width="50" height="50" onclick="cambiar2(4)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+	<input type="button" value="Pinchame" onclick="cambiar();"><br><br>
+	<input type="button" value="Empezar" onclick="comenzar();">&nbsp;&nbsp;&nbsp;
+	<input type="button" value="Finalizar" onclick="finalizar();">
+</body>
+</html>
+
+
+

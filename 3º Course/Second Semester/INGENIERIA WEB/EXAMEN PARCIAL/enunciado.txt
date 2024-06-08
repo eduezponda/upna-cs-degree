@@ -1,0 +1,17 @@
+Pregunta teoria: preguntas tipo test por el aulario pero alguna tmb de teoria/desarrollo
+
+¿Por qué es importante un correcto uso de etiquetas html semanticas? -> Escribir un párrafo respondiendo a la pregunta
+Aporta 2 ejemplos en el que corregirías un mal uso de etiquetas semánticas por uno de buen uso de etiquetas semánticas
+
+
+
++Todas las etiquetas tienen semántica, significado (mejora la accesibilidad de la web, facilitando a los lectores de pantalla y 
+a otros asistentes tecnológicos interpretar correctamente la estructura y el contenido de las páginas)
+
++Permite a los buscadores entender mejor el contenido de nuestra web (optimización del motor de búsqueda (SEO), permitiendo que los
+motores de búsqueda entiendan mejor el contenido de la página y la organicen eficazmente en los resultados de búsqueda. 
+Esto conlleva a una mejor experiencia de usuario y a una mayor visibilidad en línea)
+
+Ejemplo 1: Uso incorrecto de div para encabezados en vez de h2 (usar h2 para que el motor entienda mejor la estructura)
+
+Ejemplo 2: Uso incorrecto de <b> para dar énfasis (no usar b sino strong)

@@ -1,0 +1,31 @@
+grumphp:
+    fixer:
+        enabled: true
+        fix_by_default: true
+    tasks:
+        phpcs:
+            standard: [PSR12]
+            whitelist_patterns:
+                - /^app\/Infrastructure\/(.*)/
+                - /^app\/Services\/(.*)/
+        phpmd:
+            whitelist_patterns:
+                - /^app\/Infrastructure\/(.*)/
+                - /^app\/Services\/(.*)/
+            ruleset: ['cleancode', 'codesize', 'naming']
+            exclude: [DBClient.php]
+        git_commit_message:
+            allow_empty_message: false
+            enforce_capitalized_subject: false
+            max_subject_width: 100
+            matchers:
+                Must contain follow [1234] - Format: '/^\[[0-9]+\] - [A-Z][a-zA-Z\$]*/'
+            case_insensitive: true
+        git_branch_name:
+            whitelist:
+                - '/^\d+-[a-zA-Z\$]+/'
+                - 'main'
+                - 'master'
+        phpunit:
+            config_file: './phpunit.xml'
+            always_execute: true

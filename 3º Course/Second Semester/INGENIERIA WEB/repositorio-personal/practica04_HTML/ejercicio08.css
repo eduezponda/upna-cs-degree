@@ -1,0 +1,23 @@
+#fondoTitulo {
+    background-color: yellow;
+    color: green;
+    text-align: center;
+}
+#parrafo {
+    background-color:purple;
+    color:white;
+    text-decoration: underline;
+    width: 50%;
+}
+#divImagen{
+    background-color: grey;
+    width: 150px;
+    height: 150px;    
+}
+#imagen{
+    width: 100px;
+    height: 100px;
+}
+div{
+    border: 3px dashed black;
+}

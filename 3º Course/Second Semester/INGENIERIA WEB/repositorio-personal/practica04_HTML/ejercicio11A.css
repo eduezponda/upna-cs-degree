@@ -1,0 +1,71 @@
+header{
+    background-color: aquamarine;
+    
+}
+header h1{
+    margin:0px;
+}
+nav {
+    border-bottom: 10px solid red; /* Línea roja después del nav */
+    margin-top:-20px;
+    margin-bottom:-20px;
+    
+}
+ul{
+    margin-bottom: 0px;
+}
+ul li{
+    background-color: green;
+    margin-bottom:0px;
+    list-style: none;
+    text-align: center;
+    padding: 10px;
+    width: 25%;
+    display: inline-block;
+    
+}
+li a{
+    color:white;
+}
+#seccion1, #seccion2, #seccion3 {
+    padding-top:5px;
+    padding-bottom: 10px;
+    background-color: rgb(177, 219, 194);
+    margin: 20px;
+    border: 5px solid black;
+}
+article{
+    text-decoration: underline dashed green;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 2.5px dashed green;
+}
+h3{
+    padding-left: 10px;
+}
+aside{
+    color:white;
+    background-color: grey;
+    text-align: top left;
+    padding-top: 10px;
+    padding-bottom:30px;
+}
+aside p {
+    margin: 0; 
+}
+footer{
+    background-color: black;
+    color:white;
+    text-align: right;
+}
+body {
+    margin:0px;
+    border: 5px solid #000; /* Ancho y color del marco */ /* Ajusta según sea necesario para dar espacio al contenido */
+}
+main{
+    background-color: rgb(187, 175, 175);
+    padding-bottom: 10px;
+}
+
+
+

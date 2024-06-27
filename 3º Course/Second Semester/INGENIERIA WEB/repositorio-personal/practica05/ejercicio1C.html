@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="parrafo1"> Hola 1</p>
+    <p id="parrafo2"> Hola 2</p>
+    <p id="parrafo3"> Hola 3</p>
+    <script>
+        let p = document.getElementsByTagName("p");
+
+        for (let i = 0; i < p.length; i++) {
+            let span = document.createElement("span");
+            span.innerHTML = " Parrafo " + (i + 1); 
+            p[i].prepend(span);
+        }
+    </script>
+</body>
+</html>

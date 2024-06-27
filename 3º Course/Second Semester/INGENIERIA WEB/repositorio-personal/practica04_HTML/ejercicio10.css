@@ -1,0 +1,19 @@
+th{
+    background-color: #ADD8E6;
+    text-align: center;
+}
+td{
+    padding: 15px;
+}
+.mayus{
+    text-transform: uppercase;
+}
+#segundaHora span{
+    color:red;
+}
+td,th{
+    border:dashed 2px black;
+}
+th span{
+    background-color: yellow;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MINIJUEGO</title>
+        <script type="text/javascript" src = "script.js"></script>
+        <link rel="stylesheet" href="css/styleGame.css">
+    </head>
+    <body>
+        <div class="container">
+            <canvas id="my_canvas" width="800" height="600"></canvas>
+            <h3 class="barra"></h3>
+
+        </div>
+        <div class="dropdown">
+            <button onclick="showText()">Show Instructions</button>
+            <div id="dropdownContent" class="dropdown-content">
+                <h3><Instructions:</h3>
+                <ol>
+                    <li>Move Character: Right and Left Arrow</li>
+                    <li>Launch Missiles: Press Space</li>
+                    <li>Generate Virus: Click on screen</li>
+                    <li>Restart Game: Press "P" key</li>
+                </ol>
+            </div>
+        </div>
+        <div id="gameOverModal" class="gameOver" >
+            <div class="gameOver-content">
+                <p id="gameFinished"></p>
+                <button id="restartButton">RESTART</button>
+                <button id="historyButton">HISTORY</button>
+            </div>
+        </div>
+        <div id="tableModal">
+            <table id="table">
+                <tr>
+                    <td>Enemy 1</td>
+                    <td>Enemy 2</td>
+                    <td>Enemy 3</td>
+                    <td>Enemy 4</td>
+                    <td>Enemy 5</td>
+                    <td>Enemy 6</td>
+                    <td>Enemy 7</td>
+                    <td>Enemy 8</td>
+                    <td>Enemy 9</td>
+                    <td>Enemy 10</td>
+                    <td>Enemy 11</td>
+                    <td>Enemy 12</td>
+                    <td>Enemy 13</td>
+                    <td>Enemy 14</td>
+                    <td>Enemy 15</td>
+                    <td>Enemy 16</td>
+                    <td>Enemy 17</td>
+                    <td>Enemy 18</td>
+                    <td>Enemy 29</td>
+                    <td>Enemy 20</td>
+                </tr>
+                <tr>
+                    <td id="enemy1">Alive</td>
+                    <td id="enemy2">Alive</td>
+                    <td id="enemy3">Alive</td>
+                    <td id="enemy4">Alive</td>
+                    <td id="enemy5">Alive</td>
+                    <td id="enemy6">Alive</td>                   
+                    <td id="enemy7">Alive</td>
+                    <td id="enemy8">Alive</td>
+                    <td id="enemy9">Alive</td>
+                    <td id="enemy10">Alive</td>
+                    <td id="enemy11">Alive</td>
+                    <td id="enemy12">Alive</td>
+                    <td id="enemy13">Alive</td>
+                    <td id="enemy14">Alive</td>
+                    <td id="enemy15">Alive</td>
+                    <td id="enemy16">Alive</td>                   
+                    <td id="enemy17">Alive</td>
+                    <td id="enemy18">Alive</td>
+                    <td id="enemy19">Alive</td>
+                    <td id="enemy20">Alive</td>
+                </tr>
+            </table>
+        </div>
+    </body>  
+</html>

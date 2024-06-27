@@ -1,0 +1,100 @@
+/* App.css */
+.app-container {
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.header {
+  background-color: #f5f5f5;
+  padding: 10px 0;
+}
+
+.navigation .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.navigation .menu a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #777;
+}
+
+.bookrealm-image {
+  background: url('image.jpg') no-repeat center;
+  background-size: cover;
+  height: 300px; /* Ajusta la altura según sea necesario */
+}
+
+/* Ahora, .main-content ya no necesita el background de image.jpg */
+.main-content {
+  padding: 20px;
+}
+
+
+.content-section h1 {
+  margin-bottom: 30px;
+  color: rgb(0, 0, 0);
+}
+
+.content-button, .more-info-button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.more-info-button {
+  background-color: #e67e22;
+  color: white;
+  font-weight: bold;
+}
+
+/* ContactSection Styling */
+.contact-section {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.contact-section h2 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.contact-section p {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.contact-section input[type=email] {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 80%; /* You can adjust the width as needed */
+}
+
+.contact-section button {
+  padding: 10px 20px;
+  background-color: #e67e22;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Footer Styling Update */
+.footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

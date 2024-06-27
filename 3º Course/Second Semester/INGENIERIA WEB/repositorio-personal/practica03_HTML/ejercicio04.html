@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Ejercicio 4</title>
+	</head>
+	<body>
+		<form>
+		  <label for="nombre">Nombre:</label>
+		  <input id="nombre" type="text"><br>
+		  <label for="edad">Edad:</label>
+		  <input id="edad" type="number" min="15" max="99"><br>
+		  <label for="email">Correo electrónico:</label>
+		  <input type="email" id="email"><br>
+		  <label for="contraseña">Contraseña:</label>
+		  <input id="contraseña" type="password" minlength="5" maxlength="12"><br>
+		  <label for="curso">Curso:</label>
+		  <select id="curso" name="curso" required>
+			  <option value="2º Carrera">2º Carrera</option>
+			  <option value="3º Carrera">3º Carrera</option>
+			  <option value="4º Carrera">4º Carrera</option>
+		  </select><br>
+		  <label for="Comentario">Comentario:</label><br>
+		  <textarea id="comentario" rows="5" placeholder="Escribe aqui tu comentario."></textarea><br>
+		  <label>
+			  <input type="radio" name="colorPelo" value="rubio">
+			  Rubio
+		  </label><br>
+		  <label>
+			  <input type="radio" name="colorPelo" value="castaño">
+			  Castaño
+			</label><br>
+			<label>
+			  <input type="radio" name="colorPelo" value="moreno">
+			  Moreno
+			</label><br>
+			<label>
+			  <input type="radio" name="colorPelo" value="pelirrojo">
+			  Pelirrojo
+			</label><br>
+			<label>
+			  <input type="radio" name="colorPelo" value="calvo" checked>
+			  Calvo
+			</label><br>
+			<label>
+			  <input type="radio" name="colorPelo" value="otro">
+			  Otro...
+			</label><br>
+			Vehiculo:<br>
+			<label>
+			  <input type="checkbox" name="vehiculo">
+			  Coche
+			</label><br>
+			<label>
+			  <input type="checkbox" name="vehiculo">
+			  Bici
+			</label><br>
+			<label>
+			  <input type="checkbox" name="vehiculo">
+			  Moto
+			</label><br>
+			<label>
+			  <input type="checkbox" name="vehiculo">
+			  Barco
+			</label><br>
+			<label>
+			  <input type="checkbox" name="vehiculo">
+			  Bus
+			</label><br>
+			<label for="fechaApocalipsis">Fecha del Apocalipsis:</label>
+			<input type="date" id="fechaApocalipsis"min="2023-02-14" max="2024-01-05"><br>
+			<label for="nivelPoder">Nivel de poder:</label>
+			<input id="nivelPoder" type="range" step="200" min=0" max="9000"><br>	
+			<input type="submit" value="ENVIAR">
+			<input type="reset" value="RESET">
+		</form>
+	</body>
+</html>

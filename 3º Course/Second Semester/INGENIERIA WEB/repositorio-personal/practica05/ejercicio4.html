@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="nombre">Nombre personaje Señor de los Anillos</label>
+    <input type="text" id="nombre">
+    <button onclick="verificarPersonaje()">Aceptar</button>
+
+    <script>
+        function verificarPersonaje() {
+            let nombre = document.getElementById("nombre").value.toUpperCase();
+            let personajes = ["GANDALF", "FRODO", "SAM", "LEGOLAS", "ARAGORN"];
+
+            if (personajes.includes(nombre)) {
+                alert("¡Es un personaje de El Señor de los Anillos!");
+            } else {
+                alert("No es un personaje de El Señor de los Anillos.");
+            }
+        }      
+    </script>
+</body>
+</html>

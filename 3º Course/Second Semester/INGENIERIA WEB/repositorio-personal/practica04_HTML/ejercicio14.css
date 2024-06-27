@@ -1,0 +1,13 @@
+.contenido{
+    display: flex;
+    flex-direction: row;
+}
+nav{
+    flex-basis:  20%;
+}
+main{
+    flex-basis: 50%;
+}
+aside{
+    flex-basis: 30%;
+}

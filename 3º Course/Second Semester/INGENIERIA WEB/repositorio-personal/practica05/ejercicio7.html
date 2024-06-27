@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>IWUPNA</title>
+  </head>
+
+    <body data-new-gr-c-s-check-loaded="14.996.0" data-gr-ext-installed="">
+
+      <p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+      <a id="enlace_1" href="#" onclick="muestraOculta('contenidos_1','enlace_1')">Ocultar contenidos</a>
+      <br>
+
+      <p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+      <a id="enlace_2" href="#" onclick="muestraOculta('contenidos_2','enlace_2')">Ocultar contenidos</a>
+      <br>
+
+      <p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc, posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis, faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+      <a id="enlace_3" href="#" onclick="muestraOculta('contenidos_3','enlace_3')">Ocultar contenidos</a>
+
+      <script type="text/javascript">
+        function muestraOculta(idContenido, idEnlace) {
+            var parrafo = document.getElementById(idContenido);
+            var enlace = document.getElementById(idEnlace);
+
+            if (parrafo.style.display == 'none') {
+                parrafo.style.display = 'block';
+                enlace.textContent = 'Mostrar contenidos';
+            } else {
+                parrafo.style.display = 'none';
+                enlace.textContent = 'Mostrar contenidos';
+            }
+        }
+      </script>
+
+
+    </body>
+</html>

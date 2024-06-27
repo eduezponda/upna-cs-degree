@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="calcularPuntuacion()">
+        <legend>Capital de Andalucia</legend>
+        <label><input type="radio" name="andalucia" value="sevilla">Sevilla</label>
+        <label><input type="radio" name="andalucia" value="granada">Granada</label>
+        <label><input type="radio" name="andalucia" value="malaga">Malaga</label>
+
+        <legend>Capital de Galicia</legend>
+        <label><input type="radio" name="galicia" value="vigo">Vigo</label>
+        <label><input type="radio" name="galicia" value="santiago">Santiago</label>
+        <label><input type="radio" name="galicia" value="ourense">Ourense</label> <br>
+        <input type="submit" value="ENVIAR">
+        <!--<button type="button" onclick="calcularPuntuacion()">Calcular Puntuación</button>-->
+    </form>
+    </form>
+    <script>
+        function calcularPuntuacion(){
+            let puntuacion = 0;
+            let checkboxes = document.querySelectorAll('input[type="radio"]:checked');
+
+            checkboxes.forEach(function(checkbox){
+                if ((checkbox.name == 'andalucia' && checkbox.value == 'sevilla') 
+                    || (checkbox.name == 'galicia' && checkbox.value == 'santiago')){
+                        puntuacion++;
+                    }
+
+            });
+            alert(`Tu puntuacion es: ${puntuacion}`);
+            return false; //evitar envio automatico del formulario al presionar submit
+        }
+
+    </script>
+</body>
+</html>

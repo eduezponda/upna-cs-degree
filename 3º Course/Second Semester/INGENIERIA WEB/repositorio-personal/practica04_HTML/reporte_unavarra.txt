@@ -1,0 +1,49 @@
+Nº de peticiones: 65 requests
+
+Tamaño: 5.4 MB resources
+
+Protocolo HTTP: HTTP/2
+
+Se puede visualizar que todos los recursos se obtienen correctamente ya que todos los status son 200 o 204
+
+
+curl -I https://www.unavarra.es/portada
+	HTTP/2 403 
+	date: Sun, 24 Mar 2024 21:47:11 GMT
+	server: Apache
+	content-type: text/html; charset=iso-8859-1
+	strict-transport-security: max-age=16000000; includeSubDomains; preload;
+	set-cookie: SERVERID=p4; path=/
+	
+Cabeceras request: 
+Referer:
+https://www.unavarra.es/si/assets/css/app.css
+Sec-Ch-Ua:
+"Not(A:Brand";v="24", "Chromium";v="122"
+Sec-Ch-Ua-Mobile:
+?0
+Sec-Ch-Ua-Platform:
+"Linux"
+User-Agent:
+Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36
+
+Cabeceras response: 
+Accept-Ranges:
+bytes
+
+Age:
+244
+Content-Length:
+1013
+Content-Type:
+image/svg+xml
+Date:
+Sun, 24 Mar 2024 21:42:22 GMT
+Last-Modified:
+Tue, 12 Mar 2024 11:41:49 GMT
+Server:
+Apache
+Strict-Transport-Security:
+max-age=16000000; includeSubDomains; preload;
+
+

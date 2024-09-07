@@ -106,10 +106,10 @@ Implemented a final project in Android Studio simulating a rehabilitation machin
 Implemented error handling, theorems for finding roots in functions and polynomials, separating them into intervals (SCRUM), genetic algorithms with various methods, interpreting results based on parameters and methods, convergence, fitness functions, gravitational algorithms, and linear systems. Practically implemented in Python a genetic algorithm for the traveling salesman problem, with documentation in `I5_EzpondaIgea.pdf` and code in `C5_EzpondaIgea.zip`.
 
 ### Web Engineering
-Covered HTML, CSS, JS, React, accessibility, usability, SEO, Figma, and Git, culminating in a web page project based on a books API in React in the `grupo-jamon` repository.
+Covered HTML, CSS, JS, React, accessibility, usability, SEO, Figma, and Git, culminating in a web page project based on a books API in React in the `repositorio-grupal` repository.
 
 ### Web Information Systems
 Covered backend development using PHP to implement a recipes API, including AJAX, MVC, and fetch, to combine PHP within HTML.
 
 ### Software Verification and Validation
-Implemented best coding practices such as clean code, use of Git, Laravel, Docker, unit and integration testing (dummies, fakes, spies, mocks, stubs), error and exception handling, Postman, CI/CD, GrumPHP, GitHub Actions (CodeSniffer, Mess Detector). Also performed coding katas. All is documented in the final project `ges03_laravel`, a Twitch API in Laravel covered by test doubles, multiple endpoints, and best coding practices. Everything is in PHP. The name `ges03` comes from the initials (Guillermo, Eduardo, Santiago) and the birth year 2003.
+Implemented best coding practices such as clean code, use of Git, Laravel, Docker, unit and integration testing (dummies, fakes, spies, mocks, stubs), error and exception handling, Postman, CI/CD, GrumPHP, GitHub Actions (CodeSniffer, Mess Detector). Also performed coding katas. All is documented in the final project `laravel-twitch-api`, a Twitch API in Laravel covered by test doubles, multiple endpoints, and best coding practices. Everything is in PHP. The name `twitch-api` comes from the initials (Guillermo, Eduardo, Santiago) and the birth year 2003.

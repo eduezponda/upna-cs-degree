@@ -113,3 +113,44 @@ Covered backend development using PHP to implement a recipes API, including AJAX
 
 ### Software Verification and Validation
 Implemented best coding practices such as clean code, use of Git, Laravel, Docker, unit and integration testing (dummies, fakes, spies, mocks, stubs), error and exception handling, Postman, CI/CD, GrumPHP, GitHub Actions (CodeSniffer, Mess Detector). Also performed coding katas. All is documented in the final project `laravel-twitch-api`, a Twitch API in Laravel covered by test doubles, multiple endpoints, and best coding practices. Everything is in PHP. The name `twitch-api` comes from the initials (Guillermo, Eduardo, Santiago) and the birth year 2003.
+
+## Year 4
+The final year includes practical experience through an internship, an Erasmus exchange in Helsinki, and the Bachelor's Thesis.
+
+### Subjects
+- Project Management I
+- Language Processors
+- Information System Security
+- Company Internship
+- AWS Cloud
+- Building an Online Shop
+- Data-Driven Decision Making
+- Fundamentals of Software Testing
+- Bachelor's Thesis
+
+### Project Management I
+Built an exam management platform for teachers and students using Django (backend) and Vite with TypeScript and Tailwind CSS (frontend), applying Scrum methodology.
+
+### Language Processors
+Developed a compiler with Flex and Bison, including scanner, parser, symbol table, quadruples, and labels.
+
+### Information System Security
+Covered secure network setups, iptables, SSH tunneling, public/private key authentication, VPNs, hashing, encryption, and web access control.
+
+### Company Internship
+Adapted the Django backend for Kronis to support a migration to Next.js, with unit tests for validation.
+
+### AWS Cloud
+Studied AWS fundamentals aligned with the Cloud Practitioner Certification, with hands-on practice in a demo environment.
+
+### Building an Online Shop
+Applied business and data analysis to make strategic decisions in e-commerce contexts.
+
+### Data-Driven Decision Making
+Used analytical tools to interpret business reports and support strategic planning.
+
+### Fundamentals of Software Testing
+Learned test processes, techniques, and documentation. Applied methods to detect and manage defects.
+
+### Bachelor's Thesis
+Adapted Kronis’ backend for a Next.js frontend, implemented unit tests, and built a web interface. Set up local development with Docker (PostgreSQL + Redis).

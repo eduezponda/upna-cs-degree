@@ -1,0 +1,96 @@
+1 input a
+2 input b
+3 input c
+4 input b_aux
+5 input b_aux2
+6 input len
+7 input letra
+8 if a >= b goto 10
+9 goto 23
+10 if b_aux goto 12
+11 goto 23
+12 max := a
+13 if b >= c goto 15
+14 goto 18
+15 med := b
+16 min := 5
+17 goto 22
+18 if b < c goto 20
+19 goto 22
+20 med := c
+21 min := b
+22 goto 52
+23 if b >= a goto 25
+24 goto 38
+25 if b >= c goto 27
+26 goto 38
+27 max := b
+28 if a >= c goto 30
+29 goto 33
+30 med := a
+31 min := c
+32 goto 37
+33 if a < c goto 35
+34 goto 37
+35 med := c
+36 min := 0
+37 goto 52
+38 if c >= b goto 40
+39 goto 52
+40 if c = a goto 42
+41 goto 52
+42 max := c
+43 if b >= a goto 45
+44 goto 49
+45 med := b
+46 t0 := a div b
+47 min := t0
+48 goto 52
+49 if b <= a goto 51
+50 goto 52
+51 goto 52
+52 if b <> a goto 54
+53 goto 56
+54 if b <= c goto 58
+55 goto 56
+56 if b_aux goto 58
+57 goto 60
+58 b_aux := true
+59 goto 61
+60 b_aux := false
+61 letra := 'a'
+62 t1 := - 1
+63 i := t1
+64 len := 10.50
+65 if i < 0 goto 67
+66 goto 81
+67 if false goto 71
+68 goto 69
+69 if true goto 71
+70 goto 73
+71 b_aux2 := true
+72 goto 74
+73 b_aux2 := false
+74 t2 := (entero) -> (real) min
+75 t3 := len / t2
+76 len := t3
+77 aux := "vuelta"
+78 t4 := i + 1
+79 i := t4
+80 goto 65
+81 j := 0
+82 t5 := med * 3
+83 if j <= t5 goto 85
+84 goto 90
+85 t6 := x - 2
+86 x := t6
+87 t7 := j + 1
+88 j := t7
+89 goto 83
+90 output max
+91 output min
+92 output med
+93 output b_aux
+94 output b_aux2
+95 output len
+96 output letra

@@ -1,0 +1,81 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+Documentation		Test scenarios for GitLab project functionality. This includes Create, Read, Update, and Delete (CRUD) operations for projects.
+
+Pre Condition	    User must be logged in and on the project or project creation page.
+Post Condition	    Project is created, updated, or deleted depending on the test case.
+Tags	            Project, CRUD
+
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+CreateProjectUrl = https://gitlab.com/projects/new
+ProjectName = Input_ProjectName
+ProjectURL = Input_Group_Or_User
+VisibilityLevel = Private
+
+DuplicateProjectName = ProjectName
+
+Template = Ruby on Rails
+
+NewProjectName = Input_NewProjectName
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# Positive Test examples are below write test process steps for each below test case
+
+Create Blank Project
+    Navigate To Project Creation Page    CreateProjectUrl
+	Select Create blank project
+    Input Project Name                   ProjectName
+    Select Project URL                 	 ProjectURL
+    Select Visibility Level              VisibilityLevel
+    Click Create Project Button
+    Verify Page Should Contain           Project 'Input_ProjectName' was successfully created.
+
+Create from template
+    Navigate To Project Creation Page    CreateProjectUrl
+	Select Create from template
+    Select Use template in Template
+   	Input Project Name                   ProjectName
+    Select Project URL                   ProjectURL
+    Select Visibility Level              VisibilityLevel
+    Click Create Project Button
+    Verify Page Should Contain           Project 'Input_ProjectName' was successfully created.
+
+Update name of template project
+	Navigate To Project Page    		 ProjectURL
+	Click More Actions Button            # 3 vertical points
+    Click Project Settings From Dropdown
+    Input Project Name               	 NewProjectName
+    Click Save Changes Button
+    Verify Page Should Contain           Project 'NewProjectName' was successfully updated.
+
+Delete template project
+	Navigate To Project Page    		 ProjectURL
+	Click More Actions Button            # 3 vertical points
+    Click Leave Project From Dropdown
+    Click Leave Project Button
+    Verify Page Should Contain           You left the "Input_Group_Or_User / Input_ProjectName" project.
+
+Valide that message is showing 
+
+# Negative Test examples are below write test process steps for each below test case
+
+Create a blank project with the previous same name
+	Navigate To Project Creation Page    CreateProjectUrl
+	Select Create blank project
+    Input Project Name                   DuplicateProjectName
+    Select Project URL                   ProjectURL
+    Select Visibility Level              VisibilityLevel
+    Click Create Project Button
+    Verify Page Should Contain           The form contains the following errors: Project namespace has already been taken, Name has already been taken, Path has already been taken.

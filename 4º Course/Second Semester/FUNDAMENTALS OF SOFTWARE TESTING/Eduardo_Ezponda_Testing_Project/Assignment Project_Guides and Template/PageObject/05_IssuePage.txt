@@ -1,0 +1,61 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+Pre Condition    Project must be created and accessible by the user before creating issues.
+Post Condition   Created issues are removed after deletion test case.
+Tags             Issue, CRUD
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+IssueUrl = https://gitlab.com/groupname/projectname/-/issues
+IssueTitle = Input_IssueTitle
+UpdatedIssueTitle = Input_UpdatedIssueTitle
+SecondIssueTitle = UpdatedIssueTitle
+
+UserName = UserName
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# Positive Test examples are below write test process steps for each below test case
+
+Create Issue
+    Navigate To Issue Page    		   IssueUrl
+	Click New issue Button
+	Select Type						   Issue
+    Input Issue Title                  IssueTitle
+    Click Create issue Button
+    Verify Page Should Contain         Issue created just now by UserName.
+
+Update title of issue
+    Navigate To Issue Page    		   IssueUrl
+	Select IssueTitle Issue
+	Select Edit Button						   
+    Input Issue Title                  UpdatedIssueTitle
+    Click Save changes Button
+    Verify Page Should Contain         UserName changed title from IssueTitle to UpdatedIssueTitle just now
+
+Create second issue with previous updated title
+    Navigate To Issue Page    		   IssueUrl
+	Click New issue Button
+	Select Type						   Issue
+	Input Issue Title				   SecondIssueTitle
+    Click Save changes Button
+    Verify Page Should Contain         Issue created just now by UserName.
+
+Delete first issue
+	Navigate To Issue Page    		   IssueUrl
+	Select IssueTitle Issue
+	Click More Actions Button            # 3 vertical points
+	Click Delete issue From Dropdown
+	Click Delete Issue Button
+	Verify Page Should Not Contain     IssueTitle on Issues list.
+

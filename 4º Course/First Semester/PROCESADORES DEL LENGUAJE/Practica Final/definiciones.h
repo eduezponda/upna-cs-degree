@@ -1,0 +1,23 @@
+#ifndef DEFINICIONES_H
+#define DEFINICIONES_H
+
+    #define TIPO_ENTERO 0
+    #define TIPO_CADENA 1
+    #define TIPO_CARACTER 2
+    #define TIPO_REAL 3
+    #define TIPO_BOOL 4
+
+    #define TIPO_DIVISION_ENTERA 0
+    #define TIPO_DIVISION_REAL 1
+
+    #define TIPO_OPERADOR_Y 0
+    #define TIPO_OPERADOR_0 1
+
+    #define TIPO_COMPARADOR_MENOR 1
+    #define TIPO_COMPARADOR_MAYOR 2
+    #define TIPO_COMPARADOR_MENOR_IGUAL 3
+    #define TIPO_COMPARADOR_MAYOR_IGUAL 4
+    #define TIPO_COMPARADOR_DISTINTO 5
+    #define TIPO_COMPARADOR_IGUAL 6
+
+#endif // DEFINICIONES_H

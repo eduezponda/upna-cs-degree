@@ -1,0 +1,120 @@
+#******************** Settings ************************
+
+*** Settings ***
+
+Documentation	User Registration Test scenario with verification, valid and invalid credentials.
+
+Pre Condition    Open Browser
+Post Condition   Close All Browsers
+Tags             Register
+
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+RegisterUrl = https://gitlab.com/users/sign_up
+FirstName = Input_FirstName
+LastName = Input_LastName
+Username = Input_UserName
+Email = XYZ@gmail.com
+Password = ***
+VerificationCode = 123456
+
+DuplicateUserName = XYZ
+InvalidEmail = NotValidEmail
+EmptyPassword = 
+UserDataIncludedInPassword = Username
+CommonPhraseInPassword = password
+
+
+#******************** Test Cases *************************
+
+*** Test Cases ***
+
+# Positive Test
+
+Register User With Valid Credentials
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username                   Username
+    Input Email                      Email
+    Input Password                   Password
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      Please check your email to verify your account.
+    Input Verification Code         VerificationCode
+    Click Verify email address
+    Verify Page Should Contain      Your email has been verified
+
+    Click Next
+    Verify Page Should Contain      Welcome to Gitlab
+
+
+# Negative Tests
+
+Register With Existing Username
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username                   DuplicateUserName
+    Input Email                      Email
+    Input Password                   Password
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      1 error prohibited this user from being saved: Username has already been taken
+
+Register With Empty Password
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username                   Username
+    Input Email                      Email
+    Input Password                   EmptyPassword
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      Must be between 8-128 characters. Cannot use common phrases (e.g. "password"). Cannot include your name, username, or email.
+
+Register With Invalid Email Format
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username    Username
+    Input Email       InvalidEmail
+    Input Password    Password
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      Please provide a valid email address
+
+Register Without Completing CAPTCHA
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username                   Username
+    Input Email                      Email
+    Input Password                   Password
+    Click Continue
+    Verify Page Should Contain      Incorrect verification
+
+Register With User Data Included In Password
+    Navigate To Registration Page    RegisterUrl
+	Input First Name    FirstName
+    Input Last Name     LastName
+    Input Username                   Username
+    Input Email                      Email
+    Input Password                   UserDataIncludedInPassword
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      Cannot include your name, username, or email
+
+Register With Common Phrase In Password
+    Navigate To Registration Page    RegisterUrl
+	Input First Name                 FirstName
+    Input Last Name                  LastName
+    Input Username                   Username
+    Input Email                      Email
+    Input Password                   CommonPhraseInPassword
+	Complete CAPTCHA
+    Click Continue
+    Verify Page Should Contain      Cannot use common phrases (e.g. "password")
